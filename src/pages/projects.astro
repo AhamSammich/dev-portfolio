@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+    {
+        title: "Battle Fleet",
+        description: "A clone of the classic Battleship you can play with a friend! Built using Socket.io and Vue 3.",
+        videoHtml: '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/877dc449e80543989ffeaefaa4db220e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>',
+        imgSrc: undefined,
+        url: "https://battlefleet.up.railway.app",
+    },
+    {
+        title: "Word Unscramble",
+        description: "An anagram solver to help with all those addictive word games!",
+        videoHtml: undefined,
+        imgSrc: "unscrabble2.png",
+        url: "https://word-unscramble.up.railway.app",
+    },
+]
+---
+
+<Layout title="Portfolio | Andre L. Hammons">
+    <section>
+        <div class="card">
+            {projects.map(project => (
+                <Fragment>
+                    <ProjectCard
+                        title={project.title}
+                        description={project.description}
+                        imgSrc={project.imgSrc}
+                        videoHtml={project.videoHtml}
+                        url={project.url}
+                    ></ProjectCard>
+                </Fragment>
+            ))}
+        </div>
+    </section>        
+</Layout>
+
+<style>
+    section {
+        margin-top: 20%;
+        color: var(--color1);
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 5em;
+    }
+
+    img {
+        width: inherit;
+    }
+</style>

@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const entries = [
+    {
+        title: "Programming & Development",
+        dateStr: "2020 to present",
+        content: [
+            "Dabbling with Microsoft Excel and Visual Basic was the beginning of Andre's obsession with code. Since discovering his passion for solving problems through code, he quickly picked up the fundamentals of programming and has created several projects in order to learn different concepts and technologies.",
+
+            "His language experience includes proficiency in HTML/CSS/JavaScript, TypeScript and familiarity with Python. Andre's portfolio also includes projects demonstrating his work with Vue3 and Astro.",
+        ],
+        imgSrc: undefined,
+    },
+    {
+        title: "Nuclear Operations, Maintenance & Training",
+        dateStr: "2015 to 2023",
+        content: [
+            "Andre graduated from Naval Nuclear Power School in 2016 at the top of his class.  He completed training in Charleston, South Carolina, qualifying as a Nuclear Electronics Technician and Reactor Operator. Completion of the nuclear training pipeline was Andre's first demonstration to the U.S. Navy of his attention to detail and commitment to excellence.",
+            
+            "In Pearl Harbor, Hawaii, he served aboard the USS Mississippi for a six-month overseas deployment and a two-year dry-dock maintenance period. His time as a submariner has nurtured his problem-solving and leadership skills, as well as provided him with experience in project planning and management.",
+        ],
+        imgSrc: undefined,
+    },
+]
+---
+
+<Layout title="History | Andre L. Hammons">
+    <section id="timeline">
+        {entries.map(entry => (
+            <Fragment>
+                <div class:list={["card", { "with-img":entry.imgSrc }]}>
+                    <h2 data-text={ entry.dateStr }>{ entry.title }</h2>
+                    <Fragment>
+                        <div class="content">
+                            {entry.content.map(para => (
+                                <p>{ para }</p>
+                            ))}
+                        </div>
+                    </Fragment>
+                    {entry.imgSrc && <img src={ entry.imgSrc } alt=""/>}
+                </div>
+            </Fragment>
+        ))}
+    </section>
+</Layout>
+
+<style>
+    #timeline {
+        margin-top: 20%;
+        color: var(--color1);
+    }
+
+    .card {
+        padding: 5% 10%;
+        display: grid;
+        grid-template-areas: 
+            "title title"
+            "text text";
+        
+        &.with-img {
+            grid-template-areas: 
+            "title title"
+            "text img";
+        }
+        
+        & .content {
+            text-align: left;
+            letter-spacing: 0.1em;
+            padding-top: 0.5em;
+            font-size: clamp(14px, 2vw, 20px);
+            
+            & p { 
+                grid-area: text;
+                padding-top: 0.25em;
+            }
+        }
+        
+        & h2 {
+            grid-area: title;
+            position: relative;
+            font-size: clamp(16px, 2.5vw, 28px);
+            text-align: center;
+        }
+
+        & h2::before {
+            content: attr(data-text);
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            font-size: smaller;
+            font-weight: 300;
+            color: var(--accent3);
+        }
+
+        & img {
+            grid-area: img;
+            max-width: 720px;
+        }
+    }
+</style>

@@ -1,0 +1,76 @@
+---
+import Nav from "./Nav.astro";
+
+const tagline = "Front-end Developer";
+---
+
+<div id="header-wrapper">
+    <h1 data-text={tagline}>Andre <span id="mi">L.</span> Hammons</h1>
+
+    <!-- Hide for desktop site -->
+    <div id="header-nav">
+        <Nav></Nav>
+    </div>
+</div>
+
+<style>
+    h1 {
+        font-size: clamp(16px, 3.5vw, 36px);
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+        background: var(--gradient);
+        background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+        /* text-shadow: 0rem 0rem 0.3rem var(--color2); */
+        position: relative;
+        /* width: 60%; */
+        
+		/* sub-title/tag-line */
+		&::after {
+			content: attr(data-text);
+			width: 100%;
+			position: absolute;
+			top: 100%;
+            left: 0;
+			color: var(--accent3);
+			/* text-shadow: 0 0 0.2em var(--color2); */
+			text-align: right;
+            font-weight: 300;
+			font-size: clamp(12px, 2.5vw, 24px);
+			letter-spacing: 0.1rem;
+			border-top: 0.1rem solid var(--color1);
+            margin-top: 0.5em;
+			padding: 0.5em 0;
+		}
+    }
+
+    #mi {
+        /* background: var(--gradient);
+        background-clip: text;
+		-webkit-background-clip: text; */
+		color: var(--color1);
+        /* text-shadow: none; */
+    }
+
+    #header-wrapper {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        /* background-color: var(--color2); */
+        color: var(--color1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    #header-nav {
+        @media (orientation: portrait) and (width < 680px) {
+            display: none;
+        }
+    }
+</style>

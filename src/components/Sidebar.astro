@@ -1,0 +1,60 @@
+---
+import Nav from "./Nav.astro";
+import MenuButton from "./MenuButton.astro";
+---
+<div id="sidebar" class="">
+    <div id="sidebar-toggle">
+        <MenuButton></MenuButton>
+    </div>
+    <div id="sidebar-nav">
+        <Nav></Nav>
+    </div>
+</div>
+
+<script>
+    const menu = document.getElementById("sidebar");
+    const menuBtn = document.getElementById("sidebar-toggle");
+    
+    function toggleSidebar() {
+        menu?.classList.toggle("menu-open");
+        document.getElementById("content-wrapper")?.classList.toggle("show-sidebar");
+    }
+
+    menuBtn?.addEventListener("click", toggleSidebar)
+
+</script>
+
+<style>
+    #sidebar {
+        width: var(--sidebar-width);
+        height: 100vh;
+        background-color: var(--accent2);
+        display: none;
+        position: fixed;
+        top: 0;
+        right: calc(0% - var(--sidebar-width));
+        transform-origin: left;
+        transition: transform 0.5s;
+        z-index: 5;
+
+        @media (orientation: portrait) and (width < 680px) {
+            display: block;
+        }
+    }
+
+    #sidebar-toggle {
+        position: absolute;
+        right: 100%;
+        top: 0;
+        margin: 1rem;
+        opacity: 0.7;
+    }
+
+    #sidebar-nav {
+        color: var(--color1);
+    }
+
+    .menu-open {
+        transform: translate(-100%, 0) !important;
+    }
+</style>

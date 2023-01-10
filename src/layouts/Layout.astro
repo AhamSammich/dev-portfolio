@@ -1,0 +1,105 @@
+---
+export interface Props {
+	title: string;
+}
+
+import Sidebar from '../components/Sidebar.astro';
+import Header from '../components/Header.astro';
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" initial-scale="1.0"/>
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		<meta name="description" content="Andre L. Hammons is a front-end developer based in Las Vegas, NV.">
+		<title>{title}</title>
+	</head>
+	<body>
+		<div id="content-wrapper">
+			<header>
+				<Header></Header>
+			</header>
+			<div id="main-wrapper">
+				<slot />
+			</div>
+		</div>
+		<aside>
+			<Sidebar></Sidebar>
+		</aside>
+	</body>
+</html>
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+	:root {
+		--color1: hsl(0, 0%, 93%);
+		--color2: hsl(0, 0%, 13%);
+		--accent1: hsl(147, 50%, 60%);
+		--accent2: hsl(147, 45%, 35%);
+		--accent3: hsl(147, 20%, 70%);
+		--gradient: linear-gradient(45deg, var(--accent2) 0%, var(--accent1) 35%, var(--accent3) 100%);
+		--sidebar-width: clamp(150px, 40%, 300px);
+		
+		/* @media (prefers-color-scheme: light) {
+			--color1: hsl(0, 0%, 13%);
+			--color2: hsl(0, 0%, 93%);
+		} */
+	}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		min-height: 100vh;
+		background-color: var(--color2);
+		display: flex;
+		justify-content: center;
+		font-family: Oxygen, Verdana, Geneva, Tahoma, sans-serif;
+	}
+
+	h2 {
+		letter-spacing: 0.1em;
+		
+		&::after {
+			content: "";
+			display: block;
+			margin: 0.2em 0;
+			background: var(--gradient);
+			height: 0.2rem;
+			width: 100%;
+			border-radius: 0.1em;
+		}
+	}
+
+	#content-wrapper {
+		width: clamp(320px, 100vw, 1200px);
+		height: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		transition: transform 0.5s;
+		
+		&.show-sidebar {
+			@media (width < 680px) {
+				transform: translate(calc(-1 * var(--sidebar-width)), 0);
+			}
+		}
+	}
+
+	@keyframes fadeIn {
+		from { 
+			opacity: 0; 
+		}
+		to {
+			opacity: 1;
+		}
+	}
+</style>

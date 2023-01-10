@@ -1,0 +1,80 @@
+---
+export interface Props {
+    title: string,
+    description: string,
+    videoHtml?: string,
+    imgSrc?: string,
+    url?: string
+}
+
+const { title, description, videoHtml, imgSrc, url } = Astro.props;
+---
+
+<section>
+    <h2>{ title }</h2>
+    <p>{ description }</p>
+    <div class="project-media">
+        <div>
+            { imgSrc && <img src={imgSrc} alt={description} /> }
+        </div>
+        <div>
+            { videoHtml && <Fragment set:html={videoHtml}></Fragment> }
+        </div>
+    </div>
+    <div class="footer">
+        <p>
+            <a href={url} target="_blank">Click here to try it out!</a>
+        </p>
+        <!-- <a href="">View project on GitHub</a> -->
+    </div>
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        padding: 0 10%;
+    }
+
+    .project-media > * {
+        width: clamp(300px, 80vw, 700px);
+    }
+
+    img {
+        width: inherit;
+    }
+
+    h2 {
+        width: 100%;
+    }
+
+    .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+            
+        & p {
+            color: var(--color1);
+            padding: 0.75em;
+            background: var(--accent1);
+            border-radius: 0.2em;
+            text-shadow: 0 0 0.2em var(--color2);
+            font-weight: bold;
+            
+            & a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            &:hover {
+                translate: 0 -5%;
+                background: var(--gradient);
+                color: var(--color2);
+                text-shadow: none;
+                cursor: pointer;
+            }
+        }
+    }
+</style>
