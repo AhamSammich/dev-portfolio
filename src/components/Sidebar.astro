@@ -28,17 +28,18 @@ import MenuButton from "./MenuButton.astro";
     #sidebar {
         width: var(--sidebar-width);
         height: 100vh;
-        background-color: var(--accent2);
         display: none;
+        background-color: var(--accent2);
         position: fixed;
         top: 0;
         right: calc(0% - var(--sidebar-width));
         transform-origin: left;
         transition: transform 0.5s;
         z-index: 5;
-
+        
         @media (orientation: portrait) and (width < 680px) {
             display: block;
+            animation: slideToRight 0.5s;
         }
     }
 
@@ -55,6 +56,11 @@ import MenuButton from "./MenuButton.astro";
     }
 
     .menu-open {
-        transform: translate(-100%, 0) !important;
+        transform: translate3d(-100%, 0, 0);
     }
+    
+	@keyframes slideToRight {
+		from {transform: translate3d(-100%, 0, 0)}
+		to {transform: translate3d(0, 0, 0)}
+	}
 </style>

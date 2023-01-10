@@ -15,14 +15,21 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" initial-scale="1.0"/>
 		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		
+		<meta property="og:sitename" content="Andre L. Hammons">
+		<meta property="og:title" content="Andre L. Hammons">
+		<meta property="og:url" content="https://www.ahammons.me">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Andre L. Hammons is a front-end developer based in Las Vegas, NV.">
+		
 		<meta name="description" content="Andre L. Hammons is a front-end developer based in Las Vegas, NV.">
 		<title>{title}</title>
 	</head>
 	<body>
+		<header>
+			<Header></Header>
+		</header>
 		<div id="content-wrapper">
-			<header>
-				<Header></Header>
-			</header>
 			<div id="main-wrapper">
 				<slot />
 			</div>
@@ -94,6 +101,10 @@ const { title } = Astro.props;
 		}
 	}
 
+	#main-wrapper {
+		animation: slideFromRight 0.5s;
+	}
+
 	@keyframes fadeIn {
 		from { 
 			opacity: 0; 
@@ -102,4 +113,10 @@ const { title } = Astro.props;
 			opacity: 1;
 		}
 	}
+
+	@keyframes slideFromRight {
+		from {transform: translate3d(100%, 0, 0)}
+		to {transform: translate3d(0, 0, 0)}
+	}
+	
 </style>
