@@ -1,131 +1,184 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
-import Sidebar from '../components/Sidebar.astro';
-import Header from '../components/Header.astro';
+import Sidebar from "../components/Sidebar.astro";
+import Header from "../components/Header.astro";
+import DarkModeToggle from "../components/DarkModeToggle.vue";
+import sun from "../assets/sun.png";
+import moon from "../assets/moon.png";
 
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" initial-scale="1.0"/>
-		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-		
-		<meta property="og:sitename" content="Andre L. Hammons">
-		<meta property="og:title" content="Andre L. Hammons">
-		<meta property="og:url" content="https://www.ahammons.me">
-		<meta property="og:type" content="website">
-		<meta property="og:description" content="Andre L. Hammons is a front-end developer based in Las Vegas, NV.">
-		
-		<meta name="description" content="Andre L. Hammons is a front-end developer based in Las Vegas, NV.">
-		<title>{title}</title>
-	</head>
-	<body>
-		<header>
-			<Header></Header>
-		</header>
-		<div id="content-wrapper">
-			<div id="main-wrapper">
-				<slot />
-			</div>
-		</div>
-		<aside>
-			<Sidebar></Sidebar>
-		</aside>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+
+    <meta property="og:sitename" content="Andre L. Hammons" />
+    <meta property="og:title" content="Andre L. Hammons" />
+    <meta property="og:url" content="https://www.ahammons.me" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Andre L. Hammons is a front-end developer based in Las Vegas, NV."
+    />
+
+    <meta
+      name="description"
+      content="Andre L. Hammons is a front-end developer based in Las Vegas, NV."
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <Header />
+      <!-- <DarkModeToggle client:only="vue">
+        <img slot="disable-dark-mode" src={sun} alt="disable dark mode" />
+        <img slot="enable-dark-mode" src={moon} alt="enable dark mode" />
+      </DarkModeToggle> -->
+    </header>
+    <div id="content-wrapper">
+      <div id="main-wrapper">
+        <slot />
+      </div>
+    </div>
+    <aside>
+      <Sidebar />
+    </aside>
+    <footer>
+      <p>Andre L. Hammons | 2023</p>
+    </footer>
+  </body>
 </html>
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
-	:root {
-		--color1: hsl(0, 0%, 93%);
-		--color2: hsl(0, 0%, 13%);
-		--accent1: hsl(147, 50%, 60%);
-		--accent2: hsl(147, 45%, 35%);
-		--accent3: hsl(147, 20%, 70%);
-		--gradient: linear-gradient(45deg, var(--accent2) 0%, var(--accent1) 35%, var(--accent3) 100%);
-		--sidebar-width: clamp(150px, 40%, 300px);
-		
-		/* @media (prefers-color-scheme: light) {
-			--color1: hsl(0, 0%, 13%);
-			--color2: hsl(0, 0%, 93%);
-		} */
-	}
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	
-		&::-webkit-scrollbar {
-			width: 0.3rem;
-			background-color: var(--color2);
-		}
+  :root {
+    --color1: hsl(0, 0%, 93%);
+    --color2: hsl(0, 0%, 13%);
+    --accent1: hsl(147, 50%, 60%);
+    --accent2: hsl(147, 45%, 35%);
+    --accent3: hsl(147, 20%, 70%);
+    --gradient: linear-gradient(
+      45deg,
+      var(--accent2) 0%,
+      var(--accent1) 35%,
+      var(--accent3) 100%
+    );
+    --sidebar-width: clamp(150px, 35%, 300px);
 
-		&::-webkit-scrollbar-thumb {
-			background-color: var(--accent3);
-		}	
-	}
+    @media (prefers-color-scheme: light) {
+      --color1: hsl(0, 0%, 13%);
+      --color2: hsl(0, 0%, 93%);
+      --accent2: hsl(147, 20%, 70%);
+      --accent3: hsl(147, 45%, 35%);
+    }
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-	body {
-		min-height: 100vh;
-		background-color: var(--color2);
-		display: flex;
-		justify-content: center;
-		font-family: Oxygen, Verdana, Geneva, Tahoma, sans-serif;
-	}
+    &::-webkit-scrollbar {
+      width: 0.3rem;
+      height: 0;
+      background-color: var(--color2);
+    }
 
-	h2 {
-		letter-spacing: 0.1em;
-		
-		&::after {
-			content: "";
-			display: block;
-			margin: 0.2em 0;
-			background: var(--gradient);
-			height: 0.2rem;
-			width: 100%;
-			border-radius: 0.1em;
-		}
-	}
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--accent3);
+    }
+  }
 
-	#content-wrapper {
-		width: clamp(320px, 100vw, 1200px);
-		height: 100%;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		transition: transform 0.5s;
-		
-		&.show-sidebar {
-			@media (width < 680px) {
-				transform: translate(calc(-1 * var(--sidebar-width)), 0);
-			}
-		}
-	}
+  body {
+    min-height: 100vh;
+    background-color: var(--color2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Oxygen, Verdana, Geneva, Tahoma, sans-serif;
 
-	#main-wrapper {
-		animation: slideFromRight 0.5s;
-	}
+    &.light-mode {
+      --color1: hsl(0, 0%, 13%);
+      --color2: hsl(0, 0%, 93%);
+      --accent2: hsl(147, 20%, 70%);
+      --accent3: hsl(147, 45%, 35%);
+    }
+    &.dark-mode {
+      --color1: hsl(0, 0%, 93%);
+      --color2: hsl(0, 0%, 13%);
+      --accent2: hsl(147, 45%, 35%);
+      --accent3: hsl(147, 20%, 70%);
+    }
+  }
 
-	@keyframes fadeIn {
-		from { 
-			opacity: 0; 
-		}
-		to {
-			opacity: 1;
-		}
-	}
+  footer {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 3em;
+    padding-bottom: 1em;
+    color: var(--color1);
+    text-align: center;
+    font-size: small;
+    letter-spacing: 0.2em;
+  }
 
-	@keyframes slideFromRight {
-		from {transform: translate3d(100%, 0, 0)}
-		to {transform: translate3d(0, 0, 0)}
-	}
+  h2 {
+    letter-spacing: 0.1em;
 
+    &::after {
+      content: "";
+      display: block;
+      margin: 0.2em 0;
+      background: var(--gradient);
+      height: 0.2rem;
+      width: 100%;
+      border-radius: 0.1em;
+    }
+  }
+
+  #content-wrapper {
+    width: clamp(320px, 100vw, 1200px);
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.5s;
+
+    &.show-sidebar {
+      @media (width < 680px) {
+        transform: translate(calc(-1 * var(--sidebar-width)), 0);
+      }
+    }
+  }
+
+  #main-wrapper {
+    animation: slideFromRight 0.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideFromRight {
+    from {
+      transform: translate3d(100%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 </style>

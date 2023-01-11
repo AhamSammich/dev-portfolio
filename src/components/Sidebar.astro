@@ -21,7 +21,6 @@ import Social from "./Social.astro";
   const menuBtn = document.getElementById("sidebar-toggle");
   // @ts-ignore
   const lists: HTMLElement[] = [...menu?.getElementsByTagName("li")];
-  console.log(lists);
 
   function toggleSidebar() {
     menu?.classList.toggle("menu-open");
@@ -68,7 +67,7 @@ import Social from "./Social.astro";
   #social-nav {
     position: absolute;
     width: 100%;
-    top: 80%;
+    bottom: 5%;
     left: -30px;
     background-color: inherit;
     border-radius: 0.2em;

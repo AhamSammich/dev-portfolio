@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ssn782 from "../images/ssn782.jpg";
 
 const entries = [
   {
@@ -10,7 +11,7 @@ const entries = [
 
       "His language experience includes proficiency in HTML/CSS/JavaScript, TypeScript and familiarity with Python. Andre's portfolio also includes projects demonstrating his work with Vue3 and Astro.",
     ],
-    imgSrc: undefined,
+    imgSrc: ssn782,
   },
   {
     title: "Nuclear Operations, Maintenance & Training",
@@ -27,19 +28,18 @@ const entries = [
 
 <Layout title="History | Andre L. Hammons">
   <section id="timeline">
-    {
-      entries.map((entry) => (
+    {entries.map((entry) => (
         <Fragment>
           <div class:list={["card", { "with-img": entry.imgSrc }]}>
             <h2 data-text={entry.dateStr}>{entry.title}</h2>
             <Fragment>
-              <div class="content">
+              <div class="content" data-img={entry.imgSrc}>
                 {entry.content.map((para) => (
                   <p>{para}</p>
                 ))}
               </div>
+              {entry.imgSrc && <img src={entry.imgSrc} alt="" />}
             </Fragment>
-            {entry.imgSrc && <img src={entry.imgSrc} alt="" />}
           </div>
         </Fragment>
       ))
@@ -54,27 +54,31 @@ const entries = [
   }
 
   .card {
-    margin: 8% 10%;
-    display: grid;
-    grid-template-areas:
-      "title title"
-      "text text";
+    margin: 0 10%;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
 
-    &.with-img {
+    @media (min-width: 800px) {
+      display: grid;
+      gap: 0.5em;
+      grid-template-columns: 40% 1fr;
       grid-template-areas:
         "title title"
         "text img";
     }
 
     & .content {
+      grid-area: text;
+      container-type: inline-size;
+      container-name: content;
       text-align: left;
       letter-spacing: 0.1em;
-      padding-top: 0.5em;
-      font-size: clamp(14px, 2vw, 20px);
+      padding: 0.5em;
+      font-size: clamp(16px, 1.5cqw, 20px);
 
       & p {
-        grid-area: text;
-        padding-top: 0.25em;
+        padding-top: 1em;
       }
     }
 
@@ -82,15 +86,15 @@ const entries = [
       grid-area: title;
       position: relative;
       font-size: clamp(16px, 2.5vw, 28px);
-      text-align: center;
+      text-align: left;
     }
 
     & h2::before {
       content: attr(data-text);
       display: block;
       position: absolute;
-      left: 0;
-      bottom: 100%;
+      right: 0;
+      top: 100%;
       font-size: smaller;
       font-weight: 300;
       color: var(--accent3);
@@ -98,7 +102,8 @@ const entries = [
 
     & img {
       grid-area: img;
-      max-width: 720px;
+      max-width: 100%;
+      padding-top: 2em;
     }
   }
 </style>

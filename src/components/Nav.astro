@@ -1,117 +1,121 @@
 ---
 import Social from "./Social.astro";
 ---
+
 <nav>
-    <ul id="nav-links">
-        <a href="/">
-            <li>About</li>
-        </a>
-        <a href="/history">
-            <li>Experience</li>
-        </a>
-        <a href="/projects">
-            <li>Portfolio</li>
-        </a>
-        <!-- <a href="/blog"><li>Blog</li></a> -->
-    </ul>
+  <ul id="nav-links">
+    <a href="/">
+      <li>About</li>
+    </a>
+    <a href="/history">
+      <li>Experience</li>
+    </a>
+    <a href="/projects">
+      <li>Portfolio</li>
+    </a>
+    <!-- <a href="/blog"><li>Blog</li></a> -->
+  </ul>
 </nav>
 
 <script>
-    // highlight the current page
-    const nav: Array<HTMLAnchorElement> = Array.from(document.querySelectorAll("nav a"));
-    nav.forEach(a => {
-        if (window.location.href === a.href) {
-            a.querySelector("li")?.classList.toggle("active-page");
-        }
-    })
+  // highlight the current page
+  const nav: Array<HTMLAnchorElement> = Array.from(
+    document.querySelectorAll("nav a")
+  );
+  nav.forEach((a) => {
+    if (window.location.href === a.href) {
+      a.querySelector("li")?.classList.toggle("active-page");
+    }
+  });
 </script>
 
 <style>
-    nav {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(20px, 4vw, 32px);
+    margin-top: 1em;
+
+    @media (width >= 680px) {
+      & {
+        font-size: clamp(12px, 2vw, 20px);
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: unset;
+        margin-left: 1em;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  li {
+    padding: 0 0.75em;
+    z-index: 5;
+    position: relative;
+    cursor: pointer;
+
+    &.active-page {
+      border-bottom: 0.05em solid var(--accent3);
     }
 
-    ul {
-        width: 100%;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        font-size: clamp(20px, 4vw, 32px);
-        margin-top: 1em;
-
-        @media  (width >= 680px) {
-            & {
-                font-size: clamp(12px, 2vw, 20px);
-                flex-direction: row;
-                justify-content: center;
-                align-items: flex-start;
-                margin-top: unset;
-                margin-left: 1em;
-            }
-        }
-    }
-        
-    a {
-            text-decoration: none;
-            color: inherit;
+    &:hover {
+      color: var(--accent1);
     }
 
-    li {
-        padding: 0 0.75em;
-        z-index: 5;
-        position: relative;
-        cursor: pointer;
+    @media (width < 680px) or (orientation: landscape) {
+      & {
+        padding: 0.5em 1.5em;
+        color: var(--color2);
+      }
 
-        
-        &.active-page {
-            border-bottom: 0.05em solid var(--accent3);
-        }
+      &:hover {
+        color: var(--color2);
+        translate: none;
+        text-shadow: none;
+        background-color: var(--accent1);
+        border-right: 0.2rem solid var(--color2);
+        box-shadow: -0.2rem 0 var(--accent1);
+      }
 
-        &:hover {
-            color: var(--accent1);
-        }
-
-        @media (width < 680px) or (orientation: landscape) {
-            & {
-                padding: 0.5em 1.5em;
-            }
-            
-            &:hover {
-                color: inherit;
-                text-shadow: 0 0 0.2em var(--color2);
-                translate: none;
-                background-color: var(--accent1);
-                border-right: 0.2rem solid var(--color2);
-                box-shadow: -0.2rem 0 var(--accent1);
-            }
-
-            &.active-page {
-                color: var(--color2);
-                text-shadow: none;
-                border-bottom: none;
-            }
-        }
-
-        @media (width >= 680px) {
-            & {
-                border: none;
-            }
-
-            &.active-page {
-                color: var(--accent1);
-            }
-
-            &:hover {
-                color: var(--color2);
-                background: var(--accent3);
-                text-shadow: none;
-                border: none;
-                border-radius: 0.1em;
-                box-shadow: none;
-            }
-        }
+      &.active-page {
+        color: var(--color1);
+        text-shadow: 0 0 0.2em var(--color2);
+        border-bottom: none;
+      }
     }
+
+    @media (width >= 680px) {
+      & {
+        border: none;
+        color: var(--color1);
+      }
+
+      &.active-page {
+        color: var(--accent1);
+      }
+
+      &:hover {
+        color: var(--color2);
+        background: var(--accent3);
+        text-shadow: none;
+        border: none;
+        border-radius: 0.1em;
+        box-shadow: none;
+      }
+    }
+  }
 </style>

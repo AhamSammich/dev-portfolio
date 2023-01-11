@@ -8,24 +8,30 @@ import cvIcon from "../assets/cv.png";
 // import fbIcon from "../assets/facebook.png";
 import linkedInIcon from "../assets/linkedin.png";
 import githubIcon from "../assets/github.png";
+import discordIcon from "../assets/discord.png";
 
 const { orientation, iconOnly = true } = Astro.props;
 
 const socialLinks = [
   {
-    title: "Follow on GitHub",
-    imgSrc: githubIcon,
-    url: "https://www.github.com/ahamsammich",
+    title: "Download resume",
+    imgSrc: cvIcon,
+    url: "https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing",
   },
   {
-    title: "Connect on LinkedIn",
+    title: "/mynameisandre",
     imgSrc: linkedInIcon,
     url: "https://www.linkedin.com/in/mynameisandre",
   },
   {
-    title: "Download resume",
-    imgSrc: cvIcon,
-    url: "https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing",
+    title: "hamsammich#2449",
+    imgSrc: discordIcon,
+    url: "https://www.discord.com",
+  },
+  {
+    title: "ahamsammich",
+    imgSrc: githubIcon,
+    url: "https://www.github.com/ahamsammich",
   },
 ];
 ---
