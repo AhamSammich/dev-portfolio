@@ -1,66 +1,89 @@
 ---
 import Nav from "./Nav.astro";
 import MenuButton from "./MenuButton.astro";
+import Social from "./Social.astro";
 ---
+
 <div id="sidebar" class="">
-    <div id="sidebar-toggle">
-        <MenuButton></MenuButton>
-    </div>
-    <div id="sidebar-nav">
-        <Nav></Nav>
-    </div>
+  <div id="sidebar-toggle">
+    <MenuButton />
+  </div>
+  <nav id="sidebar-nav">
+    <Nav />
+  </nav>
+  <nav id="social-nav">
+    <Social orientation="portrait" iconOnly={false} />
+  </nav>
 </div>
 
 <script>
-    const menu = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("sidebar-toggle");
-    
-    function toggleSidebar() {
-        menu?.classList.toggle("menu-open");
-        document.getElementById("content-wrapper")?.classList.toggle("show-sidebar");
-    }
+  const menu = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("sidebar-toggle");
+  // @ts-ignore
+  const lists: HTMLElement[] = [...menu?.getElementsByTagName("li")];
+  console.log(lists);
 
-    menuBtn?.addEventListener("click", toggleSidebar)
+  function toggleSidebar() {
+    menu?.classList.toggle("menu-open");
+    lists.forEach(li => li.classList.toggle("menu-open"));
+    document
+      .getElementById("content-wrapper")
+      ?.classList.toggle("show-sidebar");
+  }
 
+  menuBtn?.addEventListener("click", toggleSidebar);
 </script>
 
 <style>
-    #sidebar {
-        width: var(--sidebar-width);
-        height: 100vh;
-        display: none;
-        background-color: var(--accent2);
-        position: fixed;
-        top: 0;
-        right: calc(0% - var(--sidebar-width));
-        transform-origin: left;
-        transition: transform 0.5s;
-        z-index: 5;
-        
-        @media (orientation: portrait) and (width < 680px) {
-            display: block;
-            animation: slideToRight 0.5s;
-        }
-    }
+  #sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    display: none;
+    background-color: var(--accent2);
+    position: fixed;
+    top: 0;
+    right: calc(0% - var(--sidebar-width));
+    transform-origin: left;
+    transition: transform 0.5s;
+    z-index: 5;
 
-    #sidebar-toggle {
-        position: absolute;
-        right: 100%;
-        top: 0;
-        margin: 1rem;
-        opacity: 0.7;
+    @media (orientation: portrait) and (width < 680px) {
+      display: block;
+      animation: slideToRight 0.5s;
     }
+  }
 
-    #sidebar-nav {
-        color: var(--color1);
-    }
+  #sidebar-toggle {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    margin: 1rem;
+    opacity: 0.7;
+  }
 
-    .menu-open {
-        transform: translate3d(-100%, 0, 0);
+  #sidebar-nav {
+    color: var(--color1);
+  }
+
+  #social-nav {
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: -30px;
+    background-color: inherit;
+    border-radius: 0.2em;
+  }
+
+  .menu-open {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  @keyframes slideToRight {
+    from {
+      transform: translate3d(-100%, 0, 0);
     }
-    
-	@keyframes slideToRight {
-		from {transform: translate3d(-100%, 0, 0)}
-		to {transform: translate3d(0, 0, 0)}
-	}
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 </style>

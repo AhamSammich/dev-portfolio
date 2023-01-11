@@ -1,0 +1,91 @@
+---
+export interface Props {
+  orientation?: "portrait" | "landscape";
+  iconOnly: boolean;
+}
+
+import cvIcon from "../assets/cv.png";
+// import fbIcon from "../assets/facebook.png";
+import linkedInIcon from "../assets/linkedin.png";
+import githubIcon from "../assets/github.png";
+
+const { orientation, iconOnly = true } = Astro.props;
+
+const socialLinks = [
+  {
+    title: "Follow on GitHub",
+    imgSrc: githubIcon,
+    url: "https://www.github.com/ahamsammich",
+  },
+  {
+    title: "Connect on LinkedIn",
+    imgSrc: linkedInIcon,
+    url: "https://www.linkedin.com/in/mynameisandre",
+  },
+  {
+    title: "Download resume",
+    imgSrc: cvIcon,
+    url: "https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing",
+  },
+];
+---
+
+<ul class={orientation ? orientation : "portrait"}>
+  <Fragment>
+    {
+      socialLinks.map((link) => (
+        <a href={link.url} target="_blank">
+          <li>
+            <img src={link.imgSrc} alt={link.title} />
+            {!iconOnly && link.title}
+          </li>
+        </a>
+      ))
+    }
+  </Fragment>
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    list-style: none;
+
+    &.portrait {
+      flex-direction: column;
+    }
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  li {
+    --offset-x: -30px;
+    padding: 0.5em;
+    background-color: inherit;
+    width: calc(100% - var(--offset-x) * 2);
+    font-size: 1rem;
+    white-space: nowrap;
+    border-radius: 0.2em;
+    transition: transform 0.1s;
+
+    &:hover {
+        background-color: var(--accent3);
+        text-align: center;
+        transform: translate3d(-85%, 0, 0);
+        transition: transform 0.5s 0.2s;
+        
+          &.menu-open {
+            transform: translate3d(var(--offset-x), 0, 0);
+            text-align: left;
+          }
+    }
+
+    & img {
+      max-width: 20px;
+      margin-right: 0.8em;
+      vertical-align: middle;
+    }
+  }
+</style>
