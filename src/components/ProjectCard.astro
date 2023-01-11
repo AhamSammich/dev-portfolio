@@ -1,80 +1,119 @@
 ---
 export interface Props {
-    title: string,
-    description: string,
-    videoHtml?: string,
-    imgSrc?: string,
-    url?: string
+  title: string;
+  description: string;
+  videoHtml?: string;
+  imgSrc?: string;
+  url?: string;
+  repo?: string;
 }
 
-const { title, description, videoHtml, imgSrc, url } = Astro.props;
+import githubIcon from "../assets/github.png";
+
+const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 ---
 
 <section>
-    <h2>{ title }</h2>
-    <p>{ description }</p>
-    <div class="project-media">
-        <div>
-            { imgSrc && <img src={imgSrc} alt={description} /> }
-        </div>
-        <div>
-            { videoHtml && <Fragment set:html={videoHtml}></Fragment> }
-        </div>
+  <h2>
+    {title}
+    <a href={repo} target="_blank">
+        <span>&Star;</span><img src={githubIcon} alt="star on GitHub" />
+    </a>
+  </h2>
+  <p>{description}</p>
+  <div class="project-media">
+    <div>
+      {imgSrc && <img src={imgSrc} alt={description} />}
     </div>
-    <div class="footer">
-        <p>
-            <a href={url} target="_blank">Click here to try it out!</a>
-        </p>
-        <!-- <a href="">View project on GitHub</a> -->
+    <div>
+      {videoHtml && <Fragment set:html={videoHtml} />}
     </div>
+  </div>
+  <div class="footer">
+    <p>
+      <a href={url} target="_blank">Click here to try it out!</a>
+    </p>
+    <!-- <a href="">View project on GitHub</a> -->
+  </div>
 </section>
 
 <style>
-    section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1em;
-        padding: 0 10%;
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 0 10%;
+  }
 
-    .project-media > * {
-        width: clamp(300px, 80vw, 700px);
-    }
+  .project-media > * {
+    width: clamp(300px, 80vw, 700px);
 
-    img {
-        width: inherit;
+    & img {
+      width: inherit;
     }
+  }
 
-    h2 {
-        width: 100%;
+  h2 {
+    width: 100%;
+    position: relative;
+
+    & a {
+      text-decoration: none;
+      color: goldenrod;
+
+      & span {
+        float: right;
+        padding-right: 1em;
+      }
+      
+      & img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1.3em;
+        z-index: -1;
+      }
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1.3em;
+        aspect-ratio: 1 / 1;
+        background-color: var(--color1);
+        z-index: -1;
+        border-radius: 50%;
+      }
     }
+  }
 
-    .footer {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-            
-        & p {
-            color: var(--color1);
-            padding: 0.75em;
-            background: var(--accent1);
-            border-radius: 0.2em;
-            text-shadow: 0 0 0.2em var(--color2);
-            font-weight: bold;
-            
-            & a {
-                color: inherit;
-                text-decoration: none;
-            }
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 
-            &:hover {
-                translate: 0 -5%;
-                background: var(--gradient);
-                color: var(--color2);
-                text-shadow: none;
-                cursor: pointer;
-            }
-        }
+    & p {
+      color: var(--color1);
+      padding: 0.75em;
+      background: var(--accent1);
+      border-radius: 0.2em;
+      text-shadow: 0 0 0.2em var(--color2);
+      font-weight: bold;
+
+      & a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:hover {
+        translate: 0 -5%;
+        background: var(--gradient);
+        color: var(--color2);
+        text-shadow: none;
+        cursor: pointer;
+      }
     }
+  }
 </style>

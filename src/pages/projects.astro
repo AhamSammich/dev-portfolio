@@ -9,6 +9,7 @@ const projects = [
         videoHtml: '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/877dc449e80543989ffeaefaa4db220e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>',
         imgSrc: undefined,
         url: "https://battlefleet.up.railway.app",
+        repo: "https://github.com/AhamSammich/battlefleet",
     },
     {
         title: "Word Unscramble",
@@ -16,6 +17,7 @@ const projects = [
         videoHtml: undefined,
         imgSrc: "unscrabble2.png",
         url: "https://word-unscramble.up.railway.app",
+        repo: "https://github.com/AhamSammich/word-unscramble",
     },
 ]
 ---
@@ -31,6 +33,7 @@ const projects = [
                         imgSrc={project.imgSrc}
                         videoHtml={project.videoHtml}
                         url={project.url}
+                        repo={project.repo}
                     ></ProjectCard>
                 </Fragment>
             ))}
