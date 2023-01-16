@@ -36,9 +36,9 @@ import { Icon } from "astro-icon";
   function setColorPref() {
     !localStorage.getItem("color-scheme") &&
     window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? setDarkMode()
-      : setLightMode();
+    window.matchMedia("(prefers-color-scheme: light)").matches
+      ? setLightMode()
+      : setDarkMode();
   }
 
   document.getElementById("dark-mode")?.addEventListener("click", setDarkMode);
