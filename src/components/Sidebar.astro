@@ -46,7 +46,7 @@ import Social from "./Social.astro";
     transition: transform 0.5s;
     z-index: 5;
 
-    @media (orientation: portrait) and (width < 680px) {
+    @media (orientation: portrait) or (width < 1000px) {
       display: block;
       animation: slideToRight 0.5s;
     }

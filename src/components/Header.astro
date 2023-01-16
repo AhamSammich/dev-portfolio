@@ -1,6 +1,6 @@
 ---
+import { Icon } from "astro-icon";
 import Nav from "./Nav.astro";
-import DarkModeToggle from "./DarkModeToggle.astro";
 const tagline = "Developer";
 ---
 
@@ -12,13 +12,19 @@ const tagline = "Developer";
   <!-- Hide for desktop site -->
   <div id="header-nav">
     <Nav />
+    <a href="/#connect" target="_self" id="go-to-connect">
+      <span>
+        <Icon pack="ic" name="baseline-contact-page" />
+      </span>
+      <p>CONNECT</p>
+    </a>
   </div>
 </div>
 
 <style>
   h1 {
     margin-left: 0.5rem;
-    font-size: clamp(16px, 3.5vw, 28px);
+    font-size: clamp(18px, 2vw, 24px);
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     white-space: nowrap;
@@ -38,7 +44,7 @@ const tagline = "Developer";
       color: var(--accent3);
       text-align: right;
       font-weight: 300;
-      font-size: clamp(12px, 2.5vw, 24px);
+      font-size: clamp(12px, 1.5vw, 18px);
       letter-spacing: 0.1rem;
       border-top: 0.05em solid var(--color1);
       margin-top: 0.25em;
@@ -57,8 +63,8 @@ const tagline = "Developer";
     justify-content: flex-start;
     align-items: center;
     padding: 1rem;
-    background-color: var(--color2);
-    box-shadow: 0 0 1rem 2rem var(--color2);
+    background-color: var(--color2a);
+    box-shadow: 0 0 1rem 2rem var(--color2a);
     color: var(--color1);
     position: fixed;
     top: 0;
@@ -71,8 +77,12 @@ const tagline = "Developer";
   }
 
   #header-nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
     margin-left: 5rem;
-    @media (orientation: portrait) and (width < 680px) {
+    @media (orientation: portrait) or (width < 1000px) {
       display: none;
     }
   }
@@ -81,5 +91,26 @@ const tagline = "Developer";
     width: 30px;
     border-radius: 50%;
     float: left;
+  }
+
+  a#go-to-connect {
+    float: right;
+    background: var(--accent3);
+    color: var(--color2);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+
+    & > * {
+      display: inline;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background: var(--accent1);
+      color: var(--color1);
+    }
+  }
+  [astro-icon] {
+    width: 25px;
   }
 </style>

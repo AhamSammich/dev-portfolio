@@ -51,38 +51,43 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       {videoHtml && <Fragment set:html={videoHtml} />}
     </div>
   </div>
-  <div class="footer">
+  <!-- <div class="footer">
     <p>
       <Icon pack="mdi" name="link-variant" />
       <a href={url} target="_blank">Click here to try it out!</a>
     </p>
-  </div>
+  </div> -->
 </section>
 
 <style>
   section {
+    height: clamp(350px, 40vh, 600px);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
     padding: 0 10%;
+    position: relative;
 
     & p {
-      font-size: clamp(18px, 2vw, 24px);
+      font-size: clamp(18px, 1.5vw, 24px);
       line-height: 1.5;
     }
 
-    @media (width >= 1000px) {
+    @media (width >= 800px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      gap: 2em;
     }
   }
 
   .project-media > * {
-    width: clamp(250px, 80vw, 400px);
+    width: clamp(200px, 80vw, 400px);
 
     & img {
       width: inherit;
+      outline: 0.1em solid var(--accent2);
+      border-radius: 0.2em;
     }
   }
 
@@ -94,6 +99,8 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
   h2 {
     width: 100%;
     position: relative;
+    font-size: clamp(20px, 2vw, 24px);
+    white-space: wrap;
 
     & a {
       text-decoration: none;
@@ -112,9 +119,11 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
   }
 
   .footer {
-    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
 
     & p {
       font-size: 20px;

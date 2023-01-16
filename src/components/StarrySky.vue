@@ -13,7 +13,7 @@ function checkSuccess(rate: number): boolean {
 
 function randomColor(): string {
   let color = checkSuccess(50) ? "lightblue" : "lightpink";
-  return checkSuccess(20) ? color : "white";
+  return checkSuccess(20) ? color : "lightgoldenrodyellow";
 }
 
 function randomSize(): number {
