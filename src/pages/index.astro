@@ -9,11 +9,13 @@ import logo from "../assets/alh-logo-light.png";
   <div class="page-container">
     <section class="page" id="page1">
       <div class="card">
-        <img src={logo} alt="brand logo" />
         <div>
           <h1 id="greeting">ALOHA! 👋🏾</h1>
           <h1 id="intro">I'M <span class="gradient">ANDRE HAMMONS</span></h1>
           <h3>AND I'M A <span class="accent">DEVELOPER</span>.</h3>
+        </div>
+        <div class="brand">
+          <!-- <img src={logo} alt="brand logo" /> -->
         </div>
       </div>
       <div id="scroll-down">
@@ -94,9 +96,19 @@ import logo from "../assets/alh-logo-light.png";
 <style>
   :global(header) {
     display: none;
+
+    @media (width >= 680px) {
+      display: block;
+    }
+  }
+
+  .page-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
   }
 
   .page {
+    scroll-snap-align: center end;
     width: 100vw;
     height: 100vh;
     overflow: clip;

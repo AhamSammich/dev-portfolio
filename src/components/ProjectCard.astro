@@ -14,32 +14,35 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 ---
 
 <section>
-  <h2>
-    {title}
-    <Fragment>
-      {
-        repo && (
-          <a href={repo} target="_blank">
-            <span>
-              <Icon pack="mdi" name="github" />
-            </span>
-          </a>
-        )
-      }
-    </Fragment>
-    <Fragment>
-      {
-        url && (
-          <a href={url} target="_blank">
-            <span>
-              <Icon pack="mdi" name="link-variant" />
-            </span>
-          </a>
-        )
-      }
-    </Fragment>
-  </h2>
-  <p>{description}</p>
+  <div>
+
+    <h2>
+      {title}
+      <Fragment>
+        {
+          repo && (
+            <a href={repo} target="_blank">
+              <span>
+                <Icon pack="mdi" name="github" />
+              </span>
+            </a>
+          )
+        }
+      </Fragment>
+      <Fragment>
+        {
+          url && (
+            <a href={url} target="_blank">
+              <span>
+                <Icon pack="mdi" name="link-variant" />
+              </span>
+            </a>
+          )
+        }
+      </Fragment>
+    </h2>
+    <p>{description}</p>
+  </div>
   <div class="project-media">
     <div>
       {imgSrc && <img src={imgSrc} alt={description} />}
@@ -64,10 +67,20 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
     align-items: center;
     gap: 1em;
     padding: 0 10%;
+
+    & p {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    @media (width >= 1000px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .project-media > * {
-    width: clamp(300px, 80vw, 700px);
+    width: clamp(250px, 80vw, 400px);
 
     & img {
       width: inherit;
@@ -105,6 +118,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
     justify-content: space-evenly;
 
     & p {
+      font-size: 20px;
       color: var(--color1);
       padding: 0.75em;
       background: var(--accent1);

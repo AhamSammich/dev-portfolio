@@ -1,79 +1,85 @@
 ---
 import Nav from "./Nav.astro";
-import logo from "../assets/alh-logo-light.png";
+import DarkModeToggle from "./DarkModeToggle.astro";
 const tagline = "Developer";
 ---
 
 <div id="header-wrapper">
-    <a href="/" target="_self"><img id="brand" src={logo} alt="Logo" /></a>
-    <h1 data-text={tagline}>Andre <span id="mi">L</span> Hammons</h1>
-    <!-- Hide for desktop site -->
-    <div id="header-nav">
-        <Nav></Nav>
-    </div>
+  <a href="/" target="_self">
+    <div class="brand"></div>
+  </a>
+  <h1 data-text={tagline}>Andre <span id="mi">L</span> Hammons</h1>
+  <!-- Hide for desktop site -->
+  <div id="header-nav">
+    <Nav />
+  </div>
 </div>
 
 <style>
-    h1 {
-        margin-left: 0.5rem;
-        font-size: clamp(16px, 3.5vw, 32px);
-        letter-spacing: 0.2rem;
-        text-transform: uppercase;
-        white-space: nowrap;
-        background: var(--gradient);
-        background-clip: text;
-		-webkit-background-clip: text;
-		color: transparent;
-        position: relative;
-        
-		/* sub-title/tag-line */
-		&::after {
-			content: attr(data-text);
-			width: 100%;
-			position: absolute;
-			top: 100%;
-            left: 0;
-			color: var(--accent3);
-			text-align: right;
-            font-weight: 300;
-			font-size: clamp(12px, 2.5vw, 24px);
-			letter-spacing: 0.1rem;
-			border-top: 0.05em solid var(--color1);
-            margin-top: 0.25em;
-			padding: 0.25em 0;
-		}
-    }
+  h1 {
+    margin-left: 0.5rem;
+    font-size: clamp(16px, 3.5vw, 32px);
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
 
-    #mi {
-		color: var(--color1);
-        font-weight: 300;
+    /* sub-title/tag-line */
+    &::after {
+      content: attr(data-text);
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      color: var(--accent3);
+      text-align: right;
+      font-weight: 300;
+      font-size: clamp(12px, 2.5vw, 24px);
+      letter-spacing: 0.1rem;
+      border-top: 0.05em solid var(--color1);
+      margin-top: 0.25em;
+      padding: 0.25em 0;
     }
+  }
 
-    #header-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 1rem;
-        background-color: var(--color2);
-        box-shadow: 0 0 1rem 2rem var(--color2);
-        color: var(--color1);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
+  #mi {
+    color: var(--color1);
+    font-weight: 300;
+  }
 
-    #header-nav {
-        margin-left: 5rem;
-        @media (orientation: portrait) and (width < 680px) {
-            display: none;
-        }
-    }
+  #header-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color2);
+    box-shadow: 0 0 1rem 2rem var(--color2);
+    color: var(--color1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
 
-    img {
-        width: 30px;
-        border-radius: 50%;
-        float: left;
+    & .brand {
+      width: 30px;
     }
+  }
+
+  #header-nav {
+    margin-left: 5rem;
+    @media (orientation: portrait) and (width < 680px) {
+      display: none;
+    }
+  }
+
+  img {
+    width: 30px;
+    border-radius: 50%;
+    float: left;
+  }
 </style>
