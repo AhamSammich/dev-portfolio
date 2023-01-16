@@ -70,10 +70,10 @@ function getDimensions(): Record<string, string> {
   position: relative;
   background-color: inherit;
   transform-origin: center;
-  animation: rotate 1200s infinite;
+  /* animation: rotate 1200s infinite; */
   z-index: -1;
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
 }
@@ -92,14 +92,15 @@ function getDimensions(): Record<string, string> {
 
 .twinkle {
   animation: twinkle 1s ease-in-out alternate infinite;
+  box-shadow: 0 0 0.5rem 0.05rem hsl(0, 0%, 90%);
 }
 
 @keyframes twinkle {
   from {
-    box-shadow: none;
+    opacity: 0;
   }
   to {
-    box-shadow: 0 0 0.5rem 0.05rem hsl(0, 0%, 90%);
+    opacity: 1;
   }
 }
 </style>
