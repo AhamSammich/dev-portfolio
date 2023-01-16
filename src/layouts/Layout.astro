@@ -55,7 +55,7 @@ const { title } = Astro.props;
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
   :root {
-    --color1: hsl(0, 0%, 93%);
+    --color1: hsl(0, 0%, 95%);
     --color2: hsl(0, 0%, 13%);
     --accent1: hsl(147, 50%, 60%);
     --accent2: hsl(147, 45%, 35%);
@@ -66,14 +66,7 @@ const { title } = Astro.props;
       var(--accent1) 35%,
       var(--accent3) 100%
     );
-    --sidebar-width: clamp(150px, 35%, 300px);
-
-    @media (prefers-color-scheme: light) {
-      --color1: hsl(0, 0%, 13%);
-      --color2: hsl(0, 0%, 93%);
-      --accent2: hsl(147, 20%, 70%);
-      --accent3: hsl(147, 45%, 35%);
-    }
+    --sidebar-width: clamp(200px, 50%, 400px);
   }
 
   * {
@@ -108,25 +101,25 @@ const { title } = Astro.props;
     justify-content: center;
     align-items: center;
     font-family: Rubik, Verdana, Geneva, Tahoma, sans-serif;
+  }
 
-    &.light-mode {
+  body.light-mode {
       --color1: hsl(0, 0%, 13%);
-      --color2: hsl(0, 0%, 93%);
-      --accent2: hsl(147, 20%, 70%);
-      --accent3: hsl(147, 45%, 35%);
+      --color2: #EAEAE0;
+      --accent1: #1DC690;
+      --accent2: #278AB0;
+      --accent3: #1C4670;
+      --gradient: linear-gradient(
+        45deg,
+        var(--accent3) 0%,
+        var(--accent2) 35%,
+        var(--accent1) 100%
+      );
 
       & .brand {
         background-image: url(/alh-logo-dark.png);
       }
     }
-    &.dark-mode {
-      --color1: hsl(0, 0%, 93%);
-      --color2: hsl(0, 0%, 13%);
-      --accent2: hsl(147, 45%, 35%);
-      --accent3: hsl(147, 20%, 70%);
-    }
-  }
-
   footer {
     max-width: 90%;
     margin: 0 auto;

@@ -69,7 +69,7 @@ import logo from "../assets/alh-logo-light.png";
             href="https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing"
           >
             <span><Icon pack="mdi" name="resume" /></span>
-            <p>Download my resume</p>
+            <p>Download my resume &rarr;</p>
           </a>
         </div>
         <div id="contact">
@@ -155,10 +155,20 @@ import logo from "../assets/alh-logo-light.png";
     left: 0;
     bottom: 0;
     text-align: center;
+    animation: zoom 2s linear alternate infinite;
 
     & > [astro-icon] {
       max-width: 50px;
       color: var(--accent3);
+    }
+  }
+
+  @keyframes zoom {
+    from {
+      transform: translate3d(0, -5%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(0, 0, 0) scale(0.9);
     }
   }
 

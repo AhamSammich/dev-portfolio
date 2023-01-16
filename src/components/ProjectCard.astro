@@ -56,7 +56,6 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       <Icon pack="mdi" name="link-variant" />
       <a href={url} target="_blank">Click here to try it out!</a>
     </p>
-    <!-- <a href="">View project on GitHub</a> -->
   </div>
 </section>
 
@@ -119,23 +118,23 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 
     & p {
       font-size: 20px;
-      color: var(--color1);
+      color: var(--color2);
       padding: 0.75em;
-      background: var(--accent1);
+      background: var(--accent3);
+      text-shadow: none;
       border-radius: 0.2em;
-      text-shadow: 0 0 0.2em var(--color2);
       font-weight: bold;
-
+      
       & a {
         color: inherit;
         text-decoration: none;
       }
-
+      
       &:hover {
         translate: 0 -5%;
         background: var(--gradient);
-        color: var(--color2);
-        text-shadow: none;
+        color: var(--color1);
+        text-shadow: 0 0 0.3em var(--color2);
         cursor: pointer;
       }
     }
