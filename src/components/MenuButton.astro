@@ -1,76 +1,70 @@
 <div class="container">
-    <div class="top bar"></div>
-    <div class="middle bar"></div>
-    <div class="bottom bar"></div>
+  <div class="top bar"></div>
+  <div class="middle bar"></div>
+  <div class="bottom bar"></div>
 </div>
 
 <script>
-    const btn = document.querySelector(".container");
+  const btn = document.querySelector(".container");
 
-    function toggleBtn() {
-        btn?.classList.toggle("menu-open");
-    }
+  function toggleBtn() {
+    btn?.classList.toggle("menu-open");
+  }
 
-    btn?.addEventListener("click", toggleBtn);
-
+  btn?.addEventListener("click", toggleBtn);
 </script>
 
 <style>
-    .container {
-        width: clamp(28px, 2vw, 40px);
-        aspect-ratio: 1 / 1;
-        border: 0.1em solid var(--color1);
-        border-radius: 0.2em;
-        background-color: var(--color2);
-        box-shadow: 0em 0em 0.2em var(--color2);
-        cursor: pointer;
-        position: relative;
-            
-        &.menu-open {
-            & .middle {
-                transform: none;
-                opacity: 0;
-            }
-            
-            & .top {
-                transform: none;
-                rotate: 45deg;
-            }
-            
-            & .bottom {
-                transform: none;
-                rotate: -45deg;
-            }
-        }
+  .container {
+    width: clamp(28px, 2vw, 40px);
+    aspect-ratio: 1 / 1;
+    border: 0.1em solid var(--color1);
+    border-radius: 0.2em;
+    background-color: var(--color2);
+    box-shadow: 0em 0em 0.2em var(--color2);
+    cursor: pointer;
+    position: relative;
 
-        &:not(.menu-open) :is(.top, .bottom) {
-        transition: 
-            rotate 0.25s,
-            transform 0.25s linear 0.25s;
-        }
+    &.menu-open {
+      & .middle {
+        transform: none;
+        opacity: 0;
+      }
+
+      & .top {
+        transform: none;
+        rotate: 45deg;
+      }
+
+      & .bottom {
+        transform: none;
+        rotate: -45deg;
+      }
     }
 
-    .bar {
-        width: 80%;
-        height: 8%;
-        background-color: var(--color1);
-        border-radius: 0.2em;
-        box-shadow: 0em 0em 0.2em var(--color2);
-        position: absolute;
-        top: 46%;
-        left: 10%;
-        transform-origin: center;
-        transition: 
-            transform 0.25s,
-            rotate 0.25s linear 0.25s;
+    &:not(.menu-open) :is(.top, .bottom) {
+      transition: rotate 0.25s, transform 0.25s linear 0.25s;
     }
+  }
 
-    .top {
-        transform: translate(0, -300%);
-    }
+  .bar {
+    width: 80%;
+    height: 8%;
+    background-color: var(--color1);
+    border-radius: 0.2em;
+    box-shadow: 0em 0em 0.2em var(--color2);
+    position: absolute;
+    top: 46%;
+    left: 10%;
+    transform-origin: center;
+    transition: transform 0.25s, rotate 0.25s linear 0.25s;
+  }
 
-    .bottom {
-        transform: translate(0, 300%);
-    }
+  .top {
+    transform: translate(0, -300%);
+  }
 
+  .bottom {
+    transform: translate(0, 300%);
+  }
 </style>

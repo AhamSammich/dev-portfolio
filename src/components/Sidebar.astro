@@ -24,7 +24,7 @@ import Social from "./Social.astro";
 
   function toggleSidebar() {
     menu?.classList.toggle("menu-open");
-    lists.forEach(li => li.classList.toggle("menu-open"));
+    lists.forEach((li) => li.classList.toggle("menu-open"));
     document
       .getElementById("content-wrapper")
       ?.classList.toggle("show-sidebar");

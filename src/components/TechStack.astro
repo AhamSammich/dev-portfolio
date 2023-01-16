@@ -1,0 +1,74 @@
+---
+export interface Props {
+  techList: string[];
+}
+
+interface techInfo {
+  pack: string;
+  name: string;
+}
+
+import { Icon } from "astro-icon";
+
+const techLogos: Record<string, techInfo> = {
+  html: { pack: "vscode-icons", name: "file-type-html" },
+  css: { pack: "vscode-icons", name: "file-type-css" },
+  js: { pack: "vscode-icons", name: "file-type-js-official" },
+  ts: { pack: "vscode-icons", name: "file-type-typescript-official" },
+  vue: { pack: "logos", name: "vue" },
+  python: { pack: "vscode-icons", name: "file-type-python" },
+  node: { pack: "vscode-icons", name: "file-type-node" },
+  react: { pack: "logos", name: "react" },
+  nuxt: { pack: "logos", name: "nuxt-icon" },
+  astro: { pack: "simple-icons", name: "astro" },
+  vscode: { pack: "vscode-icons", name: "file-type-vscode" },
+};
+
+const techUrls: Record<string, string> = {
+  node: "https://nodejs.org/",
+  vue: "https://vuejs.org/",
+  nuxt: "https://nuxt.com/",
+  astro: "https://astro.build/",
+  vscode: "https://code.visualstudio.com/",
+};
+---
+
+<div id="stack">
+  <Fragment>
+    {
+      Astro.props.techList.map((logo) => (
+        <Fragment>
+          {techUrls[logo] ? (
+            <a href={techUrls[logo]} target="_blank">
+              <Icon pack={techLogos[logo].pack} name={techLogos[logo].name} />
+            </a>
+          ) : (
+            <Icon pack={techLogos[logo].pack} name={techLogos[logo].name} />
+          )}
+        </Fragment>
+      ))
+    }
+  </Fragment>
+</div>
+
+<style>
+  [astro-icon] {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    margin: 0.5rem;
+  }
+
+  [astro-icon="simple-icons:astro"] {
+    color: var(--color1);
+  }
+
+  #stack {
+    margin: 0 auto;
+    /* display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: max-content; */
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+</style>

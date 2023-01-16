@@ -1,93 +1,217 @@
 ---
+import { Icon } from "astro-icon";
 import Layout from "../layouts/Layout.astro";
-import showcaseImg from "../images/home-img-muted.webp";
+import TechStack from "../components/TechStack.astro";
+import logo from "../assets/alh-logo-light.png";
 ---
 
-<Layout title="About | Andre L. Hammons">
-  <main>
-    <section>
-      <div id="showcase">
-        <img src={showcaseImg} alt="Andre visiting Kyoto, Japan" />
+<Layout title="Home | Andre L. Hammons">
+  <div class="page-container">
+    <section class="page" id="page1">
+      <div class="card">
+        <img src={logo} alt="brand logo" />
+        <div>
+          <h1 id="greeting">ALOHA! 👋🏾</h1>
+          <h1 id="intro">I'M <span class="gradient">ANDRE HAMMONS</span></h1>
+          <h3>AND I'M A <span class="accent">DEVELOPER</span>.</h3>
+        </div>
       </div>
-      <div id="about">
-        <h2></h2>
+      <div id="scroll-down">
+        <p>Follow me!</p>
+        <Icon pack="ic" name="twotone-keyboard-double-arrow-down" />
+      </div>
+    </section>
+
+    <section class="page" id="page2">
+      <div class="card" id="about-me">
+        <h1>JUST A BIT <span class="gradient">ABOUT ME</span></h1>
         <p>
-          Andre served as a Nuclear
-          Electronics Technician for eight years in Charleston, SC and Pearl
-          Harbor, HI. During his service, he discovered his passion for
-          coding and a strong interest in software development. Dedicated to
-          life-long learning, Andre applies his experience gained through his
-          naval service to a career in software development.
+          I finally discovered my passion for coding after eight years in the
+          Navy.
+        </p>
+        <p>
+          I'm a life-long learner always ready to apply my skills to a career in
+          tech!
+        </p>
+        <p id="go-to-history">
+          <a href="/history">Would you like to know more? &rarr;</a>
         </p>
       </div>
     </section>
-  </main>
-</Layout>
 
+    <section class="page" id="page3">
+      <div class="card" id="tech-skills">
+        <h1>LET'S TALK <span class="gradient">TECH</span></h1>
+        <div id="tech">
+          <div>
+            <h3>Languages I have learned:</h3>
+            <TechStack techList={["html", "css", "js", "ts", "python"]} />
+          </div>
+          <div>
+            <h3>Tools I have worked with:</h3>
+            <TechStack techList={["node", "vue", "astro", "nuxt", "vscode"]} />
+          </div>
+        </div>
+        <p id="go-to-projects">
+          <a href="/projects">Come see what I've built! &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="page" id="page4">
+      <div class="card" id="connect">
+        <h1><span class="gradient">CONNECT</span> WITH ME</h1>
+        <h3>AND WE CAN MAKE SOMETHING AWESOME! 🤙🏾</h3>
+        <div id="resume" class="link">
+          <a
+            href="https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing"
+          >
+            <span><Icon pack="mdi" name="resume" /></span>
+            <p>Download my resume</p>
+          </a>
+        </div>
+        <div id="contact">
+          <a href="mailto:hammons.dev@gmail.com" target="_blank">
+            <span>
+              <Icon pack="mdi" name="gmail" />
+            </span>
+          </a>
+          <a href="https://www.linkedin.com/in/mynameisandre" target="_blank">
+            <span>
+              <Icon pack="mdi" name="linkedin" />
+            </span>
+          </a>
+          <a href="https://www.discord.com/" target="_blank">
+            <span>
+              <Icon pack="mdi" name="discord" />
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
 <style>
-  main {
-    height: clamp(400px, 100vh, 800px);
-    display: flex;
-    flex-direction: column;
+  :global(header) {
+    display: none;
   }
 
-  section {
-    @media (width >= 680px) {
-      margin-top: 15%;
-      display: grid;
-      grid-auto-rows: max-content;
-      grid-template-columns: 40% 1fr;
+  .page {
+    width: 100vw;
+    height: 100vh;
+    overflow: clip;
+    /* box-shadow: inset 0 0 0 0.5rem white; */
 
-      & #showcase {
-        padding-top: 0;
-        padding-left: 5%;
-        margin-top: -10%;
+    color: var(--color1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 0;
+
+    & img {
+      max-width: 50px;
+    }
+
+    & h1 {
+      font-weight: 800;
+      font-size: 44px;
+    }
+
+    & span.gradient {
+      background: var(--gradient);
+      background-clip: text;
+      color: transparent;
+    }
+
+    & span.accent {
+      color: var(--accent1);
+    }
+
+    & p {
+      font-size: 20px;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  #scroll-down {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+
+    & > [astro-icon] {
+      max-width: 50px;
+      color: var(--accent3);
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3rem;
+
+    & > * {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      text-align: center;
+      margin: 1rem;
+    }
+
+    & h3 {
+      letter-spacing: 0.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    & a {
+      margin-top: 3rem;
+      text-decoration: none;
+      color: var(--accent3);
+
+      &:hover {
+        color: var(--accent1);
+        translate: 0 -10%;
       }
     }
   }
 
-  #showcase {
-    width: clamp(300px, 100%, 800px);
-    overflow: hidden;
-    margin: 0 auto;
-    padding-top: 15%;
-    position: relative;
-    z-index: 0;
+  #about-me p {
+    max-width: 50ch;
+    line-height: 1.5;
+  }
 
-    /* dark overlay */
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, var(--color2) 20%, transparent 20%);
-      z-index: 1;
+  #tech {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @media (width >= 680px) {
+      flex-direction: row;
+      gap: 5rem;
     }
   }
 
-  #about {
-    background-color: var(--color2);
-    color: var(--color1);
-    padding: 1.5em 10%;
-
-    & p {
-      text-align: left;
-      letter-spacing: 0.1em;
-      font-size: clamp(16px, 2vw, 20px);
-    }
-
-    & h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.1em;
-    }
+  #contact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 
-  img {
-    width: inherit;
-    max-width: 680px;
-    z-index: 0;
+  a > * {
+    display: inline;
+    padding: 0.25rem;
+    vertical-align: middle;
+  }
+
+  [astro-icon] {
+    width: 40px;
   }
 </style>

@@ -4,33 +4,39 @@ export interface Props {
   iconOnly: boolean;
 }
 
-import cvIcon from "../assets/cv.png";
-// import fbIcon from "../assets/facebook.png";
-import linkedInIcon from "../assets/linkedin.png";
-import githubIcon from "../assets/github.png";
-import discordIcon from "../assets/discord.png";
+import { Icon } from "astro-icon";
 
 const { orientation, iconOnly = true } = Astro.props;
 
 const socialLinks = [
   {
     title: "Download resume",
-    imgSrc: cvIcon,
+    iconPack: "mdi",
+    iconName: "resume",
     url: "https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing",
   },
   {
+    title: "hammons.dev@gmail.com",
+    iconPack: "mdi",
+    iconName: "gmail",
+    url: "mailto:hammons.dev@gmail.com",
+  },
+  {
     title: "/mynameisandre",
-    imgSrc: linkedInIcon,
+    iconPack: "mdi",
+    iconName: "linkedin",
     url: "https://www.linkedin.com/in/mynameisandre",
   },
   {
     title: "hamsammich#2449",
-    imgSrc: discordIcon,
+    iconPack: "mdi",
+    iconName: "discord",
     url: "https://www.discord.com",
   },
   {
-    title: "ahamsammich",
-    imgSrc: githubIcon,
+    title: "/ahamsammich",
+    iconPack: "mdi",
+    iconName: "github",
     url: "https://www.github.com/ahamsammich",
   },
 ];
@@ -42,7 +48,7 @@ const socialLinks = [
       socialLinks.map((link) => (
         <a href={link.url} target="_blank">
           <li>
-            <img src={link.imgSrc} alt={link.title} />
+            <Icon pack={link.iconPack} name={link.iconName} />
             {!iconOnly && link.title}
           </li>
         </a>
@@ -77,19 +83,19 @@ const socialLinks = [
     transition: transform 0.1s;
 
     &:hover {
-        background-color: var(--accent3);
-        text-align: center;
-        transform: translate3d(-85%, 0, 0);
-        transition: transform 0.5s 0.2s;
-        
-          &.menu-open {
-            transform: translate3d(var(--offset-x), 0, 0);
-            text-align: left;
-          }
+      background-color: var(--accent3);
+      text-align: center;
+      transform: translate3d(-85%, 0, 0);
+      transition: transform 0.5s 0.2s;
+
+      &.menu-open {
+        transform: translate3d(var(--offset-x), 0, 0);
+        text-align: left;
+      }
     }
 
-    & img {
-      max-width: 20px;
+    & [astro-icon] {
+      max-width: 25px;
       margin-right: 0.8em;
       vertical-align: middle;
     }

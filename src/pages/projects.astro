@@ -3,57 +3,70 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = [
-    {
-        title: "Battle Fleet",
-        description: "A clone of the classic Battleship you can play with a friend! Built using Socket.io and Vue 3 to understand the concepts of reactive components and use of websockets.",
-        videoHtml: '<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/877dc449e80543989ffeaefaa4db220e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>',
-        imgSrc: undefined,
-        url: "https://battlefleet.up.railway.app",
-        repo: "https://github.com/AhamSammich/battlefleet",
-    },
-    {
-        title: "Word Unscramble",
-        description: "An anagram solver to help with all those addictive word games! Built using JavaScript and NodeJS to demonstrate use of third-party APIs.",
-        videoHtml: undefined,
-        imgSrc: "unscrabble2.png",
-        url: "https://word-unscramble.up.railway.app",
-        repo: "https://github.com/AhamSammich/word-unscramble",
-    },
-]
+  {
+    title: "Battle Fleet",
+    description:
+      "A clone of the classic Battleship you can play with a friend! Built using Socket.io and Vue 3 to understand the concepts of reactive components and use of websockets.",
+    videoHtml: undefined, //'<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/877dc449e80543989ffeaefaa4db220e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>',
+    imgSrc: "battlefleet1.png",
+    url: "https://battlefleet.up.railway.app",
+    repo: "https://github.com/AhamSammich/battlefleet",
+  },
+  {
+    title: "Word Unscramble",
+    description:
+      "An anagram solver to help with all those addictive word games! Built using JavaScript and NodeJS to demonstrate use of third-party APIs.",
+    videoHtml: undefined,
+    imgSrc: "unscrabble2.png",
+    url: "https://word-unscramble.up.railway.app",
+    repo: "https://github.com/AhamSammich/word-unscramble",
+  },
+  {
+    title: "Piping Diagram Builder",
+    description:
+      "Create and save piping system diagrams! Built with vanilla JS, this project provided an extensive exploration of HTML and CSS.",
+    videoHtml: undefined,
+    imgSrc: "piper2.png",
+    url: "https://codepen.io/ahamsammich/pen/WNzXVyb",
+    repo: undefined,
+  },
+];
 ---
 
 <Layout title="Portfolio | Andre L. Hammons">
-    <section>
-        <div class="card">
-            {projects.map(project => (
-                <Fragment>
-                    <ProjectCard
-                        title={project.title}
-                        description={project.description}
-                        imgSrc={project.imgSrc}
-                        videoHtml={project.videoHtml}
-                        url={project.url}
-                        repo={project.repo}
-                    ></ProjectCard>
-                </Fragment>
-            ))}
-        </div>
-    </section>        
+  <section>
+    <div class="card">
+      {
+        projects.map((project) => (
+          <Fragment>
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imgSrc={project.imgSrc}
+              videoHtml={project.videoHtml}
+              url={project.url}
+              repo={project.repo}
+            />
+          </Fragment>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
 
 <style>
-    section {
-        margin-top: 20%;
-        color: var(--color1);
-    }
+  section {
+    margin-top: 20%;
+    color: var(--color1);
+  }
 
-    .card {
-        display: flex;
-        flex-direction: column;
-        gap: 5em;
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+  }
 
-    img {
-        width: inherit;
-    }
+  img {
+    width: inherit;
+  }
 </style>

@@ -8,7 +8,7 @@ export interface Props {
   repo?: string;
 }
 
-import githubIcon from "../assets/github.png";
+import { Icon } from "astro-icon";
 
 const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 ---
@@ -16,9 +16,28 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 <section>
   <h2>
     {title}
-    <a href={repo} target="_blank">
-        <span>&Star;</span><img src={githubIcon} alt="star on GitHub" />
-    </a>
+    <Fragment>
+      {
+        repo && (
+          <a href={repo} target="_blank">
+            <span>
+              <Icon pack="mdi" name="github" />
+            </span>
+          </a>
+        )
+      }
+    </Fragment>
+    <Fragment>
+      {
+        url && (
+          <a href={url} target="_blank">
+            <span>
+              <Icon pack="mdi" name="link-variant" />
+            </span>
+          </a>
+        )
+      }
+    </Fragment>
   </h2>
   <p>{description}</p>
   <div class="project-media">
@@ -31,6 +50,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
   </div>
   <div class="footer">
     <p>
+      <Icon pack="mdi" name="link-variant" />
       <a href={url} target="_blank">Click here to try it out!</a>
     </p>
     <!-- <a href="">View project on GitHub</a> -->
@@ -54,37 +74,27 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
     }
   }
 
+  [astro-icon] {
+    width: 20px;
+    vertical-align: middle;
+  }
+
   h2 {
     width: 100%;
     position: relative;
 
     & a {
       text-decoration: none;
-      color: goldenrod;
+      color: inherit;
 
-      & span {
+      & [astro-icon] {
         float: right;
-        padding-right: 1em;
-      }
-      
-      & img {
-        position: absolute;
-        right: 0;
-        top: 0;
         width: 1.3em;
-        z-index: -1;
+        z-index: 1;
       }
-      &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 1.3em;
-        aspect-ratio: 1 / 1;
-        background-color: var(--color1);
-        z-index: -1;
-        border-radius: 50%;
+
+      &:hover {
+        color: var(--accent1);
       }
     }
   }
