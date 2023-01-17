@@ -28,7 +28,7 @@ Dark and light modes available with on-screen animated toggle.
 
 I discovered that Iconify offers an extensive icon library through the astro-icon integration! No need to scour the web for icons (which is exactly what I had been doing for a very long time). :weary:
 
-- [This video about Iconify] popped up in my feed an hour after I finished. 
+- [This video about Iconify](https://youtu.be/a6XI8XAuORM) popped up in my feed an hour after I finished. 
 
 Mobile viewports can make responsive web design a nightmare. Choosing the right CSS units ('vw' vs. 'svw' vs. 'dvw', etc.) can be frustrating when, despite your best effort, elements either overflow or come up short. :confounded:
 
