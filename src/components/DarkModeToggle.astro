@@ -35,8 +35,7 @@ import { Icon } from "astro-icon";
 
   function setColorPref() {
     !localStorage.getItem("color-scheme") &&
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: light)").matches
+    window?.matchMedia("(prefers-color-scheme: light)").matches
       ? setLightMode()
       : setDarkMode();
   }
@@ -54,14 +53,25 @@ import { Icon } from "astro-icon";
   body.dark-mode {
     & #dark-mode {
       opacity: 0;
+      transform: translate3d(0, 100%, 0);
+      transition: all 1s;
       pointer-events: none;
     }
+    & #light-mode {
+      transition: opacity 1s;
+    }
   }
-
+  
   body.light-mode {
     & #light-mode {
       opacity: 0;
+      transform: translate3d(0, -100%, 0);
+      transition: all 1s;
       pointer-events: none;
+    }
+
+    & #dark-mode {
+      transition: opacity 1s;
     }
   }
 
