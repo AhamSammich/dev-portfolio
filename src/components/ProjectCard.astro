@@ -61,7 +61,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 
 <style>
   section {
-    height: clamp(350px, 40vh, 600px);
+    height: clamp(350px, 40svh, 600px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +70,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
     position: relative;
 
     & p {
-      font-size: clamp(18px, 1.5vw, 24px);
+      font-size: clamp(18px, 1.5svw, 24px);
       line-height: 1.5;
     }
 
@@ -99,7 +99,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
   h2 {
     width: 100%;
     position: relative;
-    font-size: clamp(20px, 2vw, 24px);
+    font-size: clamp(20px, 2svw, 24px);
     white-space: wrap;
 
     & a {
@@ -131,7 +131,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       padding: 0.75em;
       background: var(--accent3);
       text-shadow: none;
-      border-radius: 0.2em;
+      border-radius: 0.2rem;
       font-weight: bold;
       
       & a {
@@ -143,7 +143,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
         translate: 0 -5%;
         background: var(--gradient);
         color: var(--color1);
-        text-shadow: 0 0 0.3em var(--color2);
+        text-shadow: 0 0 0.3rem var(--color2);
         cursor: pointer;
       }
     }

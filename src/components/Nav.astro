@@ -42,12 +42,12 @@ import Social from "./Social.astro";
     list-style: none;
     display: flex;
     flex-direction: column;
-    font-size: clamp(20px, 2.5vw, 28px);
+    font-size: clamp(20px, 2.5svw, 28px);
     margin-top: 1em;
 
     @media (width >= 1000px) {
       & {
-        font-size: clamp(12px, 2vw, 20px);
+        font-size: clamp(12px, 2svw, 20px);
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
@@ -69,7 +69,7 @@ import Social from "./Social.astro";
     cursor: pointer;
 
     &.active-page {
-      border-bottom: 0.05em solid var(--accent3);
+      border-bottom: 0.05rem solid var(--accent3);
     }
 
     &:hover {
@@ -106,8 +106,7 @@ import Social from "./Social.astro";
 
       &.active-page {
         color: var(--accent1);
-        /* border-radius: 0.2em; */
-        box-shadow: inset 0 -0.05em 0 var(--accent3);
+        box-shadow: inset 0 -0.05rem 0 var(--accent3);
       }
 
       &:hover {
@@ -115,7 +114,7 @@ import Social from "./Social.astro";
         background: var(--accent3);
         text-shadow: none;
         border: none;
-        border-radius: 0.2em;
+        border-radius: 0.2rem;
         box-shadow: none;
       }
     }

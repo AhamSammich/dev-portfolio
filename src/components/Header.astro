@@ -1,14 +1,13 @@
 ---
 import { Icon } from "astro-icon";
 import Nav from "./Nav.astro";
-const tagline = "Developer";
 ---
 
 <div id="header-wrapper">
   <a href="/" target="_self">
     <div class="brand"></div>
   </a>
-  <h1 data-text={tagline}>Andre <span id="mi">L</span> Hammons</h1>
+  <h1>Andre <span id="mi">L</span> Hammons</h1>
   <!-- Hide for desktop site -->
   <div id="header-nav">
     <Nav />
@@ -23,9 +22,9 @@ const tagline = "Developer";
 
 <style>
   h1 {
-    margin-left: 0.5rem;
-    font-size: clamp(18px, 2vw, 24px);
-    letter-spacing: 0.2rem;
+    margin-left: 0.5em;
+    font-size: clamp(18px, 2svw, 24px);
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     white-space: nowrap;
     background: var(--gradient);
@@ -36,7 +35,7 @@ const tagline = "Developer";
 
     /* sub-title/tag-line */
     &::after {
-      content: attr(data-text);
+      content: "Developer";
       width: 100%;
       position: absolute;
       top: 100%;
@@ -44,9 +43,9 @@ const tagline = "Developer";
       color: var(--accent3);
       text-align: right;
       font-weight: 300;
-      font-size: clamp(12px, 1.5vw, 18px);
-      letter-spacing: 0.1rem;
-      border-top: 0.05em solid var(--color1);
+      font-size: clamp(12px, 1.5svw, 18px);
+      letter-spacing: 0.1em;
+      border-top: 0.05rem solid var(--color1);
       margin-top: 0.25em;
       padding: 0.25em 0;
     }
@@ -62,7 +61,7 @@ const tagline = "Developer";
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     background-color: var(--color2a);
     box-shadow: 0 0 1rem 2rem var(--color2a);
     color: var(--color1);
@@ -81,7 +80,7 @@ const tagline = "Developer";
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    margin-left: 5rem;
+    margin-left: 5em;
     @media (orientation: portrait) or (width < 1000px) {
       display: none;
     }
@@ -97,7 +96,7 @@ const tagline = "Developer";
     float: right;
     background: var(--accent3);
     color: var(--color2);
-    padding: 0.5rem;
+    padding: 0.5em;
     border-radius: 0.25rem;
 
     & > * {

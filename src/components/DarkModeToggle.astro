@@ -53,28 +53,31 @@ import { Icon } from "astro-icon";
 <style>
   body.dark-mode {
     & #dark-mode {
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
   body.light-mode {
     & #light-mode {
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
   #color-toggle {
-    margin: 0.5rem;
+    display: flex;
+    margin: 0.5em;
     position: fixed;
-    left: 0;
-    bottom: 10%;
+    left: 5%;
+    bottom: 0;
     opacity: 0.8;
     color: var(--color1);
     z-index: 5;
   }
 
   [astro-icon] {
-    width: 25px;
+    width: 40px;
     cursor: pointer;
 
     &:hover {

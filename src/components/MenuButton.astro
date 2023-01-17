@@ -16,12 +16,12 @@
 
 <style>
   .container {
-    width: clamp(28px, 2vw, 40px);
+    width: clamp(28px, 2svw, 40px);
     aspect-ratio: 1 / 1;
-    border: 0.1em solid var(--color1);
-    border-radius: 0.2em;
+    border: 0.1rem solid var(--color1);
+    border-radius: 0.2rem;
     background-color: var(--color2);
-    box-shadow: 0em 0em 0.2em var(--color2);
+    box-shadow: 0 0 0.2rem var(--color2);
     cursor: pointer;
     position: relative;
 
@@ -51,8 +51,8 @@
     width: 80%;
     height: 8%;
     background-color: var(--color1);
-    border-radius: 0.2em;
-    box-shadow: 0em 0em 0.2em var(--color2);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.2rem var(--color2);
     position: absolute;
     top: 46%;
     left: 10%;
@@ -61,10 +61,10 @@
   }
 
   .top {
-    transform: translate(0, -300%);
+    transform: translate3d(0, -300%, 0);
   }
 
   .bottom {
-    transform: translate(0, 300%);
+    transform: translate3d(0, 300%, 0);
   }
 </style>
