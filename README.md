@@ -1,50 +1,34 @@
-# Welcome to [Astro](https://astro.build)
+# Andre's Dev Portfolio
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+The second version of my personal website. This project was built with Astro and Vue.js and is hosted on Firebase.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Screenshots
 
 
-## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+## Features
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Sidebar pushes (rather than overlay) the screen from the right to reveal navigation and social links.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- I saw something similar on [a software engineer's website](https://www.hellomayuko.com) and was inspired to attempt a recreation.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- I made the animated hamburger menu after watching [a video by a favorite CSS Youtuber](https://www.youtube.com/watch?v=R00QiudbD4Y&t=1176s&ab_channel=KevinPowell).
 
-Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+Dark and light modes available with on-screen animated toggle.
 
-All commands are run from the root of the project, from a terminal:
+- I created a pseudo-starfield background for the dark theme. Inspiration was taken from [this awesome portfolio](https://soumyajit.vercel.app/) found [here on GitHub!](https://github.com/soumyajit4419/Portfolio)
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
 
-## 👀 Want to learn more?
+## What I've learned
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+I discovered that Iconify offers an extensive icon library through the astro-icon integration! No need to scour the web for icons (which is exactly what I had been doing for a very long time). :weary:
+
+- [This video about Iconify] popped up in my feed an hour after I finished. 
+
+Mobile viewports can make responsive web design a nightmare. Choosing the right CSS units ('vw' vs. 'svw' vs. 'dvw', etc.) can be frustrating when, despite your best effort, elements either overflow or come up short. :confounded:
+
+- I reference [this video by another favorite web dev Youtuber](https://youtu.be/5m6JOJLy5B0) often to refresh how the units work.
+
+
+
