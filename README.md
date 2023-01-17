@@ -46,4 +46,5 @@ If you [clone this repo](https://github.com/AhamSammich/dev-portfolio), just giv
 Thank you for reading! :grin: :wave:
 
 ## [Connect With Me](https://ahammons.me/#connect)
-:email: :speech_balloon:
+:email: hammons.dev@gmail.com
+:speech_balloon: @hammons_dev
