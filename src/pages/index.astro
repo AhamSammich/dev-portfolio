@@ -12,7 +12,7 @@ import logo from "../assets/alh-logo-light.png";
         <div>
           <h1 id="greeting">ALOHA! 👋🏾</h1>
           <h1 id="intro">I'M <span class="gradient">ANDRE HAMMONS</span></h1>
-          <h3>AND I'M A <span class="accent">DEVELOPER</span>.</h3>
+          <h2>AND I'M A <span class="accent">DEVELOPER</span>.</h2>
         </div>
         <div class="brand">
           <!-- <img src={logo} alt="brand logo" /> -->
@@ -46,11 +46,11 @@ import logo from "../assets/alh-logo-light.png";
         <h1>LET'S TALK <span class="gradient">TECH</span></h1>
         <div id="tech">
           <div>
-            <h3>Languages I have learned:</h3>
+            <h2>Languages I have learned:</h2>
             <TechStack techList={["html", "css", "js", "ts", "python"]} />
           </div>
           <div>
-            <h3>Tools I have worked with:</h3>
+            <h2>Tools I have worked with:</h2>
             <TechStack techList={["node", "vue", "astro", "nuxt", "vscode"]} />
           </div>
         </div>
@@ -63,7 +63,7 @@ import logo from "../assets/alh-logo-light.png";
     <section class="page" id="page4">
       <div class="card" id="connect">
         <h1><span class="gradient">CONNECT</span> WITH ME</h1>
-        <h3>AND WE CAN MAKE SOMETHING AWESOME! 🤙🏾</h3>
+        <h2>AND WE CAN MAKE SOMETHING AWESOME! 🤙🏾</h2>
         <div id="resume" class="link">
           <a
             href="https://drive.google.com/file/d/1HVtrGQCjOr-E3pN29t0DwPgZtkdcnX_M/view?usp=sharing"
@@ -85,7 +85,10 @@ import logo from "../assets/alh-logo-light.png";
             </span>
             <p>/mynameisandre</p>
           </a>
-          <a href="https://www.discord.com/channels/@hamsammich#2449" target="_blank">
+          <a
+            href="https://www.discord.com/channels/@hamsammich#2449"
+            target="_blank"
+          >
             <span>
               <Icon pack="mdi" name="discord" />
             </span>
@@ -106,7 +109,7 @@ import logo from "../assets/alh-logo-light.png";
   :global(header) {
     opacity: 0;
     transform: scaleY(0);
-    
+
     @media (width >= 1000px) {
       opacity: 1;
       transform: scaleY(1);
@@ -134,16 +137,12 @@ import logo from "../assets/alh-logo-light.png";
     position: relative;
     z-index: 0;
 
-    & img {
-      width: 80px;
-    }
-
     & h1 {
       font-weight: 800;
       font-size: 44px;
       display: inline;
     }
-    
+
     & span.gradient {
       display: inline;
       background: var(--gradient);
@@ -200,9 +199,13 @@ import logo from "../assets/alh-logo-light.png";
       margin: 0.5em;
     }
 
-    & h3 {
+    & h2 {
       letter-spacing: 0.1em;
       margin-bottom: 0.5em;
+
+      &::after {
+        display: none;
+      }
     }
 
     & a {

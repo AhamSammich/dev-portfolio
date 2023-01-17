@@ -4,15 +4,21 @@ import Social from "./Social.astro";
 
 <nav>
   <ul id="nav-links">
-    <a href="/">
-      <li>About</li>
-    </a>
-    <a href="/history">
-      <li>Experience</li>
-    </a>
-    <a href="/projects">
-      <li>Portfolio</li>
-    </a>
+    <li>
+      <a href="/">
+        <p>About</p>
+      </a>
+    </li>
+    <li>
+      <a href="/history">
+        <p>Experience</p>
+      </a>
+    </li>
+    <li>
+      <a href="/projects">
+        <p>Portfolio</p>
+      </a>
+    </li>
     <!-- <a href="/blog"><li>Blog</li></a> -->
   </ul>
 </nav>
@@ -24,7 +30,7 @@ import Social from "./Social.astro";
   );
   nav.forEach((a) => {
     if (window.location.href === a.href) {
-      a.querySelector("li")?.classList.toggle("active-page");
+      a.parentElement?.classList.toggle("active-page");
     }
   });
 </script>
@@ -66,7 +72,6 @@ import Social from "./Social.astro";
     padding: 0 0.75em;
     z-index: 5;
     position: relative;
-    cursor: pointer;
 
     &.active-page {
       border-bottom: 0.05rem solid var(--accent3);

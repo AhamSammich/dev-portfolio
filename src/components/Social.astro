@@ -46,12 +46,16 @@ const socialLinks = [
   <Fragment>
     {
       socialLinks.map((link) => (
-        <a href={link.url} target="_blank">
-          <li>
-            <Icon pack={link.iconPack} name={link.iconName} />
-            {!iconOnly && link.title}
-          </li>
-        </a>
+        <li>
+          <a href={link.url} target="_blank">
+            <p>
+              <span>
+                <Icon pack={link.iconPack} name={link.iconName} />
+              </span>
+              {!iconOnly && link.title}
+            </p>
+          </a>
+        </li>
       ))
     }
   </Fragment>
