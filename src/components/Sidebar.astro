@@ -43,10 +43,10 @@ import Social from "./Social.astro";
     top: 0;
     right: calc(0% - var(--sidebar-width));
     transform-origin: left;
-    transition: transform 0.5s;
+    transition: transform 0.3s ease-in-out;
     z-index: 5;
 
-    @media (orientation: portrait) or (width < 1000px) {
+    @media (orientation: portrait) or (width < 800px) {
       opacity: 1;
       animation: slideToRight 0.5s;
     }
@@ -67,7 +67,7 @@ import Social from "./Social.astro";
   #social-nav {
     position: absolute;
     width: 100%;
-    bottom: 10%;
+    bottom: 5rem;
     left: -35px;
     background-color: inherit;
     border-radius: 0.2rem;

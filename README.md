@@ -2,8 +2,9 @@
 
 The second version of my personal website. This project was built with Astro and Vue.js and is hosted on Firebase.
 
-[NOW LIVE! Check it out at **ahammons.me**!](https://ahammons.me)
+NOW LIVE! Check it out at [**ahammons.me**](https://ahammons.me)!
 
+![Go to Andre's web portfolio](/src/assets/QR-WebPortfolio.png)
 
 ## Features
 

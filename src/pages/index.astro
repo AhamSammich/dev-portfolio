@@ -34,7 +34,12 @@ import TechStack from "../components/TechStack.astro";
           tech!
         </p>
         <p id="go-to-history">
-          <a href="/history">Would you like to know more? &rarr;</a>
+          <a href="/history">
+            <Icon pack="mdi" name="about" />
+            <span>
+              Would you like to know more? &rarr;
+            </span>
+          </a>
         </p>
       </div>
     </section>
@@ -54,7 +59,12 @@ import TechStack from "../components/TechStack.astro";
           </div>
         </div>
         <p id="go-to-projects">
-          <a href="/projects">Come see what I've built! &rarr;</a>
+          <a href="/projects">
+            <Icon pack="dashicons" name="portfolio" />
+            <span>
+              Come see what I've built! &rarr;
+            </span>
+          </a>
         </p>
       </div>
     </section>
@@ -85,13 +95,13 @@ import TechStack from "../components/TechStack.astro";
             <p>/mynameisandre</p>
           </a>
           <a
-            href="https://www.discord.com/channels/@hamsammich#2449"
+            href="https://www.twitter.com/hammons_dev"
             target="_blank"
           >
             <span>
-              <Icon pack="mdi" name="discord" />
+              <Icon pack="mdi" name="twitter" />
             </span>
-            <p>@hamsammich#2449</p>
+            <p>@hammons_dev</p>
           </a>
           <a href="https://www.github.com/ahamsammich" target="_blank">
             <span>
@@ -108,11 +118,15 @@ import TechStack from "../components/TechStack.astro";
   :global(header) {
     opacity: 0;
     transform: scaleY(0);
-
-    @media (width >= 1000px) {
+/* 
+    @media (width >= 800px) {
       opacity: 1;
       transform: none;
-    }
+    } */
+  }
+
+  body::before {
+    background: transparent;
   }
 
   .page-container {
@@ -222,10 +236,6 @@ import TechStack from "../components/TechStack.astro";
     &::after {
       display: none;
     }
-  }
-
-  #intro {
-    gap: 1.5em;
   }
 
   #about-me p {

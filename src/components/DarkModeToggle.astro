@@ -34,7 +34,6 @@ import { Icon } from "astro-icon";
   }
 
   function setColorPref() {
-    !localStorage.getItem("color-scheme") &&
     window?.matchMedia("(prefers-color-scheme: light)").matches
       ? setLightMode()
       : setDarkMode();
@@ -50,47 +49,55 @@ import { Icon } from "astro-icon";
 </script>
 
 <style>
-  body.dark-mode {
-    & #dark-mode {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
-      transition: all 1s;
-      pointer-events: none;
+  body {
+    /* transition: all .5s; */
+    
+    &.dark-mode {
+      & #dark-mode {
+        opacity: 0.1;
+        /* transform: translate3d(0, 100%, 0); */
+        transition: all 1s;
+        pointer-events: none;
+      }
+      & #light-mode {
+        transition: opacity 1s;
+      }
     }
-    & #light-mode {
-      transition: opacity 1s;
+    &.light-mode {
+      & #light-mode {
+        opacity: 0.1;
+        /* transform: translate3d(0, -100%, 0); */
+        transition: all 1s;
+        pointer-events: none;
+      }
+  
+      & #dark-mode {
+        transition: opacity 1s;
+      }
     }
   }
   
-  body.light-mode {
-    & #light-mode {
-      opacity: 0;
-      transform: translate3d(0, -100%, 0);
-      transition: all 1s;
-      pointer-events: none;
-    }
-
-    & #dark-mode {
-      transition: opacity 1s;
-    }
-  }
+  
+  
 
   #color-toggle {
-    margin: 5em 1em;
+    margin: 5em 0;
     position: fixed;
     left: 0;
     bottom: 0;
-    opacity: 0.8;
     color: var(--color1);
+    background-color: var(--accent2);
+    padding: 0.25rem;
+    border-radius: 0 0.2rem 0.2rem 0;
     z-index: 5;
   }
 
   [astro-icon] {
-    width: 30px;
+    width: 25px;
     cursor: pointer;
 
     &:hover {
-      color: var(--accent1);
+      color: var(--color2);
     }
   }
 </style>
