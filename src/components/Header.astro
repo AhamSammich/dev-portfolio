@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon";
 import Nav from "./Nav.astro";
 ---
 
@@ -12,10 +11,7 @@ import Nav from "./Nav.astro";
   <div id="header-nav">
     <Nav />
     <a href="/#connect" target="_self" id="go-to-connect">
-      <p>Connect</p>
-      <span>
-        <Icon pack="ic" name="baseline-contact-page" />
-      </span>
+      Contact
     </a>
   </div>
 </div>
@@ -78,7 +74,7 @@ import Nav from "./Nav.astro";
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    margin-left: 5em;
+    margin-left: 2em;
     @media (orientation: portrait) or (width < 800px) {
       display: none;
     }
@@ -94,20 +90,15 @@ import Nav from "./Nav.astro";
     float: right;
     background: var(--accent3);
     color: var(--color2);
-    padding: 0.25em 0.5em;
-    border-radius: 0.25rem;
-
-    & > * {
-      display: inline;
-      vertical-align: middle;
-    }
+    padding: 0.25em 0.75em;
+    border-radius: 0.2rem;
+    white-space: nowrap;
+    font-size:  clamp(20px, 2.5dvw, 22px);
+    font-weight: bold;
 
     &:hover {
       background: var(--accent1);
       color: var(--color1);
     }
-  }
-  [astro-icon] {
-    width: 25px;
   }
 </style>

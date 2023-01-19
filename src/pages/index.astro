@@ -75,7 +75,7 @@ import TechStack from "../components/TechStack.astro";
         <h2>AND WE CAN MAKE SOMETHING AWESOME! 🤙🏾</h2>
         <div id="resume" class="link">
           <a
-            href="https://drive.google.com/file/d/1vhdwFA3xL4aMMU01DlNRSGwK03-q2YHw/view?usp=sharing"
+            href="https://drive.google.com/file/d/1vhdwFA3xL4aMMU01DlNRSGwK03-q2YHw/view?usp=sharing" target="_blank"
           >
             <span><Icon pack="mdi" name="resume" /></span>
             <p>Check out my resume! &rarr;</p>
@@ -118,20 +118,21 @@ import TechStack from "../components/TechStack.astro";
   :global(header) {
     opacity: 0;
     transform: scaleY(0);
-/* 
+
     @media (width >= 800px) {
       opacity: 1;
       transform: none;
-    } */
+    }
   }
 
-  body::before {
+  /* body::before {
     background: transparent;
-  }
+  } */
 
   .page-container {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   .buffer {
@@ -141,8 +142,7 @@ import TechStack from "../components/TechStack.astro";
 
   .page {
     scroll-snap-align: start;
-    width: 100svw;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
 
     color: var(--color1);

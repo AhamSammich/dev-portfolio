@@ -51,12 +51,6 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       {videoHtml && <Fragment set:html={videoHtml} />}
     </div>
   </div>
-  <!-- <div class="footer">
-    <p>
-      <Icon pack="mdi" name="link-variant" />
-      <a href={url} target="_blank">Click here to try it out!</a>
-    </p>
-  </div> -->
 </section>
 
 <style>
@@ -110,41 +104,11 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
         float: right;
         width: 1.3em;
         z-index: 1;
-      }
-
-      &:hover {
-        color: var(--accent1);
-      }
-    }
-  }
-
-  .footer {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate3d(-50%, 0, 0);
-
-    & p {
-      font-size: 20px;
-      color: var(--color2);
-      padding: 0.75em;
-      background: var(--accent3);
-      text-shadow: none;
-      border-radius: 0.2rem;
-      font-weight: bold;
-      
-      & a {
-        color: inherit;
-        text-decoration: none;
-      }
-      
-      &:hover {
-        translate: 0 -5%;
-        background: var(--gradient);
-        color: var(--color1);
-        text-shadow: 0 0 0.3rem var(--color2);
-        cursor: pointer;
+        
+        &:hover {
+          color: var(--accent1);
+          transform: scale(1.2);
+        }
       }
     }
   }

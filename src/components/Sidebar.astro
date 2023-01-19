@@ -36,7 +36,7 @@ import Social from "./Social.astro";
 <style>
   #sidebar {
     width: var(--sidebar-width);
-    height: 100lvh;
+    height: 100dvh;
     opacity: 0;
     background-color: var(--accent2);
     position: fixed;
@@ -46,18 +46,26 @@ import Social from "./Social.astro";
     transition: transform 0.3s ease-in-out;
     z-index: 5;
 
-    @media (orientation: portrait) or (width < 800px) {
-      opacity: 1;
-      animation: slideToRight 0.5s;
-    }
   }
-
+  
   #sidebar-toggle {
     position: absolute;
     right: 100%;
     top: 0;
     margin: 1em;
     opacity: 0.7;
+    transform: translate3d(100%, 0, 0);
+  }
+  
+  @media (orientation: portrait) or (width < 800px) {
+    #sidebar {
+      opacity: 1;
+      animation: slideToRight 0.5s;
+    }
+    
+    #sidebar-toggle {
+      transform: none;
+    }
   }
 
   #sidebar-nav {
