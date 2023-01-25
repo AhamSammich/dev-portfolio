@@ -20,7 +20,7 @@ import TechStack from "../components/TechStack.astro";
         <Icon pack="ic" name="twotone-keyboard-double-arrow-down" />
       </div>
     </section>
-    <div class="buffer"></div>
+    <!-- <div class="buffer"></div> -->
 
     <section class="page" id="page2">
       <div class="card" id="about-me">
@@ -43,7 +43,7 @@ import TechStack from "../components/TechStack.astro";
         </p>
       </div>
     </section>
-    <div class="buffer"></div>
+    <!-- <div class="buffer"></div> -->
 
     <section class="page" id="page3">
       <div class="card" id="tech-skills">
@@ -68,7 +68,7 @@ import TechStack from "../components/TechStack.astro";
         </p>
       </div>
     </section>
-    <div class="buffer"></div>
+    <!-- <div class="buffer"></div> -->
     <section class="page" id="page4">
       <div class="card" id="connect">
         <h1><span class="gradient">CONNECT</span> WITH ME</h1>
@@ -132,15 +132,17 @@ import TechStack from "../components/TechStack.astro";
   .page-container {
     overflow-y: scroll;
     scroll-behavior: smooth;
+    scroll-snap-type: proximity;
   }
 
-  .buffer {
+  /* .buffer {
     min-height: 50lvh;
     background: transparent;
-  }
+  } */
 
   .page {
-    height: 100svh;
+    scroll-snap-align: start;
+    height: 100lvh;
     overflow: hidden;
 
     color: var(--color1);
