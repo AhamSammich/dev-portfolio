@@ -33,6 +33,9 @@ import TechStack from "../components/TechStack.astro";
           I'm a life-long learner always ready to apply my skills to a career in
           tech!
         </p>
+        <p>
+          Outside of work, I love playing board games with friends. To relax, I enjoy immersing myself in story-driven video games.
+        </p>
         <p id="go-to-history">
           <a href="/history">
             <Icon pack="mdi" name="about" />
@@ -55,7 +58,7 @@ import TechStack from "../components/TechStack.astro";
           </div>
           <div>
             <h2>Tools I have worked with:</h2>
-            <TechStack techList={["git", "node", "vue", "astro", "nuxt", "vscode", "pycharm"]} />
+            <TechStack techList={["git", "node", "vue", "astro", "nuxt", "vscode", "pycharm", "railway"]} />
           </div>
         </div>
         <p id="go-to-projects">
@@ -125,14 +128,14 @@ import TechStack from "../components/TechStack.astro";
     }
   }
 
-  /* body::before {
-    background: transparent;
-  } */
-
   .page-container {
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: proximity;
+  }
+
+  :not(.page) {
+    scroll-snap-align: none;
   }
 
   /* .buffer {
@@ -246,11 +249,13 @@ import TechStack from "../components/TechStack.astro";
   #tech {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2em;
-
+    
     @media (width >= 800px) {
+      padding-left: 3em;
       flex-direction: row;
-      gap: 2.5em;
+      justify-content: space-around;
     }
   }
 
