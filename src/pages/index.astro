@@ -34,14 +34,13 @@ import TechStack from "../components/TechStack.astro";
           tech!
         </p>
         <p>
-          I love playing board games with friends, and I enjoy delving into a good story.
+          I love playing board games with friends, and I enjoy delving into a
+          good story.
         </p>
         <p id="go-to-history">
           <a href="/history">
             <Icon pack="mdi" name="about" />
-            <span>
-              Would you like to know more? &rarr;
-            </span>
+            <span> Would you like to know more? &rarr;</span>
           </a>
         </p>
       </div>
@@ -58,15 +57,24 @@ import TechStack from "../components/TechStack.astro";
           </div>
           <div>
             <h2>Tools I have worked with:</h2>
-            <TechStack techList={["git", "node", "vue", "astro", "nuxt", "vscode", "pycharm", "railway"]} />
+            <TechStack
+              techList={[
+                "git",
+                "node",
+                "vue",
+                "astro",
+                "nuxt",
+                "vscode",
+                "pycharm",
+                "railway",
+              ]}
+            />
           </div>
         </div>
         <p id="go-to-projects">
           <a href="/projects">
             <Icon pack="dashicons" name="portfolio" />
-            <span>
-              Come see what I've built! &rarr;
-            </span>
+            <span> Come see what I've built! &rarr;</span>
           </a>
         </p>
       </div>
@@ -78,7 +86,8 @@ import TechStack from "../components/TechStack.astro";
         <h2>AND WE CAN MAKE SOMETHING AWESOME! 🤙🏾</h2>
         <div id="resume" class="link">
           <a
-            href="https://drive.google.com/file/d/1vhdwFA3xL4aMMU01DlNRSGwK03-q2YHw/view?usp=sharing" target="_blank"
+            href="https://drive.google.com/file/d/1vhdwFA3xL4aMMU01DlNRSGwK03-q2YHw/view?usp=sharing"
+            target="_blank"
           >
             <span><Icon pack="mdi" name="resume" /></span>
             <p>Check out my resume! &rarr;</p>
@@ -97,10 +106,7 @@ import TechStack from "../components/TechStack.astro";
             </span>
             <p>/mynameisandre</p>
           </a>
-          <a
-            href="https://www.twitter.com/hammons_dev"
-            target="_blank"
-          >
+          <a href="https://www.twitter.com/hammons_dev" target="_blank">
             <span>
               <Icon pack="mdi" name="twitter" />
             </span>
@@ -251,7 +257,7 @@ import TechStack from "../components/TechStack.astro";
     flex-direction: column;
     align-items: center;
     gap: 2em;
-    
+
     @media (width >= 800px) {
       padding-left: 3em;
       flex-direction: row;

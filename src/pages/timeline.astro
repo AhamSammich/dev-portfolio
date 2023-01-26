@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Timeline from "../components/Timeline.vue";
+
+const events = [
+  {
+    name: "birth",
+    year: 1989,
+    description: "Born in The Netherlands",
+  },
+  {
+    name: "high school",
+    year: 2007,
+    description: "Graduated from Coronado HS",
+  },
+  {
+    name: "college",
+    year: 2013,
+    description: "Graduated from UNLV",
+  },
+  {
+    name: "navy",
+    year: 2015,
+    description: "Enlisted in the Navy",
+  },
+];
+---
+
+<Layout title="My Timeline">
+  <Timeline events={events} />
+</Layout>
