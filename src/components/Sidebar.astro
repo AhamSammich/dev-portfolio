@@ -37,7 +37,7 @@ import Social from "./Social.astro";
   #sidebar {
     width: var(--sidebar-width);
     height: 100dvh;
-    opacity: 0;
+    display: none;
     background-color: var(--accent2);
     position: fixed;
     top: 0;
@@ -59,7 +59,7 @@ import Social from "./Social.astro";
   
   @media (orientation: portrait) or (width < 800px) {
     #sidebar {
-      opacity: 1;
+      display: block;
       animation: slideToRight 0.5s;
     }
     

@@ -2,7 +2,7 @@
 const props = defineProps<{
   events: {
     name: string;
-    year: number;
+    year: string | number;
     description: string;
   }[];
 }>();
@@ -20,8 +20,16 @@ const props = defineProps<{
 </template>
 
 <style scoped lang="postcss">
+::before,
+::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
 #timeline {
-  height: 33dvh;
+  height: 70dvh;
+  width: 100vw;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -31,15 +39,6 @@ const props = defineProps<{
   align-items: center;
   padding: 0.5rem;
   position: relative;
-
-  &::before {
-    content: "";
-    display: block;
-    height: inherit;
-    background: linear-gradient(180deg, var(--color2), transparent, var(--color2));
-    top: 0;
-    left: 0;
-  }
 
   &::-webkit-scrollbar {
     width: 0.1rem;
@@ -51,23 +50,32 @@ const props = defineProps<{
   --point-size: 64px;
   display: flex;
   width: 300px;
+  overflow-x: visible;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
   background-color: var(--color2);
   color: var(--color1);
+
   margin: 0.25em 5rem;
   padding: 3rem 1rem;
   position: relative;
+
+  & > h1 {
+    font-size: 24px;
+  }
+
+  & > p {
+    width: clamp(32ch, 100%, 40ch);
+  }
 
   &::before,
   &::after {
     height: 100%;
     width: 90%;
-    position: absolute;
-    display: block;
     z-index: -1;
-    content: "";
     border-radius: var(--curve);
     top: 0;
     left: 0;

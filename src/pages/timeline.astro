@@ -4,35 +4,62 @@ import Timeline from "../components/Timeline.vue";
 
 const events = [
   {
-    name: "Birth",
-    year: 1989,
-    description: "Born in The Netherlands",
-  },
-  {
-    name: "High School",
-    year: 2007,
-    description: "Graduated from Coronado HS",
-  },
-  {
-    name: "College",
+    name: "Graduated!",
     year: 2013,
-    description:
-      "Graduated from UNLV with a Bachelor's in Interdisciplinary Studies",
+    description: "Finished college at University of Nevada Las Vegas with a B.A. in Interdisiplinary Studies",
   },
   {
-    name: "Navy",
+    name: "In the Navy",
     year: 2015,
     description:
-      "Enlisted in the Navy and trained as a nuclear electronics technician",
+      "Enlisted in the Navy and trained as a nuclear electronics technician in Charleston, SC",
   },
   {
-    name: "Transition",
+    name: "Island Life",
+    year: 2019,
+    description: "Served my sea tour aboard the submarine USS Mississippi in Pearl Harbor, HI",
+  },
+  {
+    name: "A New Hobby",
+    year: 2020,
+    description: "I discovered an interest in programming while creating productivity tools using Excel/VBA for work",
+  },
+  {
+    name: "Learning to Build",
+    year: 2021,
+    description: "I learned basic Python and JavaScript by watching YouTube tutorials and online courses in my free time",
+  },
+  {
+    name: "Building to Learn",
+    year: 2022,
+    description: "Eager to apply new concepts, I started creating games and other projects to reinforce newly developed skills",
+  },
+  {
+    name: "End of Service",
     year: 2023,
-    description: "Starting a new career",
+    description: "After a successful eight years, I began my transition back into the civilian workforce",
+  },
+  {
+    name: "New Aspirations",
+    year: "NOW",
+    description: "I'm working toward a new career in development and increasing my engagement with the tech community",
   },
 ];
 ---
 
 <Layout title="My Timeline">
-  <Timeline events={events} />
+  <div id="timeline-mask">
+    <Timeline events={events} />
+  </div>  
 </Layout>
+
+<style>
+  #timeline-mask {
+    mask: linear-gradient(
+      180deg,
+      transparent,
+      var(--color2) 10% 90%,
+      transparent
+    );
+  }
+</style>
