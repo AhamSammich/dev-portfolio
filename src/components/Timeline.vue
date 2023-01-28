@@ -60,11 +60,11 @@ onMounted(() => {
   display: grid;
   gap: 0.5em;
   position: fixed;
-  left: -1.5em;
-  margin-top: 2.5%;
+  margin-top: 5%;
   margin-left: 5%;
   padding-right: 1em;
   border-right: 0.1em solid var(--accent1);
+  left: 0;
 
   & a:hover {
     color: var(--accent2);
@@ -74,7 +74,16 @@ onMounted(() => {
     border-color: var(--accent1);
   }
 
-  @media (width < 680px) {
+  @media (width > 800px) {
+    margin-right: 5%;
+    padding-left: 1em;
+    border-left: 0.1em solid var(--accent1);
+    border-right: none;
+    left: unset;
+    right: 0;
+  }
+
+  @media (width <= 680px) {
     display: none;
   }
 }
