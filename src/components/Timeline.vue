@@ -1,21 +1,48 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 const props = defineProps<{
   events: {
-    name: string;
+    title: string;
     year: string | number;
     description: string;
   }[];
 }>();
+
+const currentCard = ref("");
+const evHeaders = Object.values(props.events).map((ev) => ev.title);
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio > 0) {
+        currentCard.value = entry.target.getAttribute("id") || "";
+      }
+    });
+  });
+
+  [...document.querySelectorAll(".event-card>h1")].forEach((card) => {
+    observer.observe(card);
+  });
+});
 </script>
 
 <template>
   <div id="timeline">
-    <template v-for="ev in events">
-      <div class="event-card" :data-year="ev.year">
-        <h1>{{ ev.name }}</h1>
-        <p>{{ ev.description }}</p>
-      </div>
-    </template>
+    <div id="toc">
+      <template v-for="(ev, index) in evHeaders" :key="ev">
+        <a :class="{ current: index }" :href="`#${index}`">
+          {{ ev }}
+        </a>
+      </template>
+    </div>
+    <div id="events">
+      <template v-for="(ev, index) in events" :key="ev">
+        <div :id="`${index}`" class="event-card" :data-year="ev.year">
+          <h1>{{ ev.title }}</h1>
+          <p>{{ ev.description }}</p>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -27,21 +54,48 @@ const props = defineProps<{
   position: absolute;
 }
 
+#toc {
+  font-size: smaller;
+  color: var(--color1);
+  display: grid;
+  gap: 0.5em;
+  position: fixed;
+  left: -1.5em;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  padding-right: 1em;
+  border-right: 0.1em solid var(--accent1);
+
+  & a:hover {
+    color: var(--accent2);
+  }
+
+  & a.current {
+    border-color: var(--accent1);
+  }
+
+  @media (width < 680px) {
+    display: none;
+  }
+}
+
 #timeline {
   height: 70dvh;
   width: 100vw;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 0.5rem;
+  padding-bottom: 25vh;
   position: relative;
 
   &::-webkit-scrollbar {
-    width: 0.1rem;
+    width: 0rem;
   }
 }
 
@@ -54,20 +108,23 @@ const props = defineProps<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   line-height: 1.2;
   letter-spacing: 0.05em;
   background-color: var(--color2);
   color: var(--color1);
 
-  margin: 0.25em 5rem;
+  margin: 0.5em 5rem;
   padding: 3rem 1rem;
   position: relative;
 
   & > h1 {
+    animation: fadeIn 1s;
     font-size: 24px;
   }
 
   & > p {
+    animation: fadeIn 1s;
     width: clamp(32ch, 100%, 40ch);
   }
 
@@ -110,7 +167,7 @@ const props = defineProps<{
       border-radius: 50%;
       left: 0;
       top: 50%;
-      translate: -65% -50%;
+      translate: -60% -50%;
     }
 
     /* TIMELINE (LEFT) */
@@ -132,7 +189,7 @@ const props = defineProps<{
       border-radius: 50%;
       left: 100%;
       top: 50%;
-      translate: -40% -50%;
+      translate: -45% -50%;
     }
 
     /* TIMELINE (RIGHT) */
