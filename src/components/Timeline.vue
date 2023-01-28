@@ -14,13 +14,15 @@ const evHeaders = Object.values(props.events).map((ev) => ev.title);
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.intersectionRatio > 0) {
-        currentCard.value = entry.target.getAttribute("id") || "";
-      }
+      if (entry.isIntersecting) currentCard.value = entry.target.textContent || ""
     });
+  }, {
+    threshold: 0.5,
+    root: document.getElementById('timeline'),
+    rootMargin: '0px 300px 0px 0px',
   });
 
-  [...document.querySelectorAll(".event-card>h1")].forEach((card) => {
+  document.querySelectorAll(".event-card h1").forEach((card) => {
     observer.observe(card);
   });
 });
@@ -30,7 +32,10 @@ onMounted(() => {
   <div id="timeline">
     <div id="toc">
       <template v-for="(ev, index) in evHeaders" :key="ev">
-        <a :class="{ current: index }" :href="`#${index}`">
+        <a 
+          :href="`#${index}`"
+          :class="`${ev == currentCard ? 'current' : ''}`"
+          >
           {{ ev }}
         </a>
       </template>
@@ -58,33 +63,40 @@ onMounted(() => {
   font-size: smaller;
   color: var(--color1);
   display: grid;
-  gap: 0.5em;
+  gap: 0;
   position: fixed;
-  margin-top: 5%;
+  margin-top: 5vh;
   margin-left: 5%;
-  padding-right: 1em;
-  border-right: 0.1em solid var(--accent1);
   left: 0;
+  
+  & a {
+    background-color: var(--color2);
+    padding: 0.25em 1em;
+    border-right: 0.1em solid var(--accent1);
+  }
 
   & a:hover {
     color: var(--accent2);
   }
 
-  & a.current {
-    border-color: var(--accent1);
-  }
-
   @media (width > 800px) {
     margin-right: 5%;
-    padding-left: 1em;
-    border-left: 0.1em solid var(--accent1);
-    border-right: none;
     left: unset;
     right: 0;
+  
+    & a {
+      border-left: 0.1em solid var(--accent1);
+      border-right: none;
+    }
   }
 
   @media (width <= 680px) {
     display: none;
+  }
+
+  & .current {
+    border-color: var(--accent3);
+    color: var(--accent3);
   }
 }
 
@@ -126,14 +138,13 @@ onMounted(() => {
   margin: 0.5em 5rem;
   padding: 3rem 1rem;
   position: relative;
-
-  & > h1 {
-    animation: fadeIn 1s;
+  & h1 {    
+    /* animation: fadeIn 1s; */
     font-size: 24px;
   }
 
-  & > p {
-    animation: fadeIn 1s;
+  & p {
+    /* animation: fadeIn 1s; */
     width: clamp(32ch, 100%, 40ch);
   }
 
