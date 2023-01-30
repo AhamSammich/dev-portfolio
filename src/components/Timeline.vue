@@ -3,27 +3,38 @@ import { onMounted, ref } from "vue";
 const props = defineProps<{
   events: {
     title: string;
-    year: string | number;
+    year?: string | number;
     description: string;
   }[];
 }>();
 
 const currentCard = ref("");
-const evHeaders = Object.values(props.events).map((ev) => ev.title);
 
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) currentCard.value = entry.target.textContent || ""
-    });
-  }, {
-    threshold: 0.5,
-    root: document.getElementById('timeline'),
-    rootMargin: '0px 300px 0px 0px',
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Update table of contents while scrolling
+          currentCard.value = entry.target.textContent || "";
+          // Reveal cards while scrolling
+          if (entry.target.classList.contains("event-card")) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    },
+    {
+      threshold: 0,
+      root: document.getElementById("timeline"),
+      rootMargin: "0px 0px 0px 0px",
+    }
+  );
 
   document.querySelectorAll(".event-card h1").forEach((card) => {
     observer.observe(card);
+    if (card.parentElement) observer.observe(card.parentElement);
   });
 });
 </script>
@@ -31,12 +42,9 @@ onMounted(() => {
 <template>
   <div id="timeline">
     <div id="toc">
-      <template v-for="(ev, index) in evHeaders" :key="ev">
-        <a 
-          :href="`#${index}`"
-          :class="`${ev == currentCard ? 'current' : ''}`"
-          >
-          {{ ev }}
+      <template v-for="(ev, index) in events" :key="ev">
+        <a :href="`#${index}`" :class="`${ev.title == currentCard ? 'current' : ''}`">
+          {{ ev.year || "" }}
         </a>
       </template>
     </div>
@@ -68,7 +76,8 @@ onMounted(() => {
   margin-top: 5vh;
   margin-left: 5%;
   left: 0;
-  
+  z-index: 5;
+
   & a {
     background-color: var(--color2);
     padding: 0.25em 1em;
@@ -83,7 +92,7 @@ onMounted(() => {
     margin-right: 5%;
     left: unset;
     right: 0;
-  
+
     & a {
       border-left: 0.1em solid var(--accent1);
       border-right: none;
@@ -101,8 +110,10 @@ onMounted(() => {
 }
 
 #timeline {
+  height: 70vh;
   height: 70dvh;
   width: 100vw;
+  width: 100dvw;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -112,7 +123,7 @@ onMounted(() => {
   justify-content: flex-start;
   align-items: center;
   padding: 0.5rem;
-  padding-bottom: 25vh;
+  padding-bottom: 5%;
   position: relative;
 
   &::-webkit-scrollbar {
@@ -125,6 +136,7 @@ onMounted(() => {
   --point-size: 64px;
   display: flex;
   width: 300px;
+  min-height: 250px;
   overflow-x: visible;
   flex-direction: column;
   justify-content: center;
@@ -138,14 +150,18 @@ onMounted(() => {
   margin: 0.5em 5rem;
   padding: 3rem 1rem;
   position: relative;
-  & h1 {    
-    /* animation: fadeIn 1s; */
+  & h1 {
     font-size: 24px;
   }
 
   & p {
-    /* animation: fadeIn 1s; */
     width: clamp(32ch, 100%, 40ch);
+  }
+
+  & :is(h1, p) {
+    transform-origin: top;
+    opacity: 0;
+    transition: all 0.5s 0.5s;
   }
 
   &::before,
@@ -156,11 +172,15 @@ onMounted(() => {
     border-radius: var(--curve);
     top: 0;
     left: 0;
+    opacity: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: all 0.5s;
   }
 
   /* DATE BUBBLE */
   &::before {
-    content: attr(data-year);
+    content: attr(data-year) "";
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -216,6 +236,15 @@ onMounted(() => {
     &::after {
       box-shadow: 2.25em 0 0 0.5em var(--color1);
     }
+  }
+}
+
+.event-card.revealed {
+  & :is(h1, p),
+  &::after,
+  &::before {
+    transform: none;
+    opacity: 1;
   }
 }
 </style>
