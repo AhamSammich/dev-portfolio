@@ -15,7 +15,6 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
 
 <section>
   <div>
-
     <h2>
       {title}
       <Fragment>
@@ -42,6 +41,11 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       </Fragment>
     </h2>
     <p>{description}</p>
+    <a href={url} target="_blank">
+      <span>
+        <Icon pack="mdi" name="link-variant" />
+      </span>{url}
+    </a>
   </div>
   <div class="project-media">
     <div>
@@ -70,11 +74,15 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
       line-height: 1.5;
     }
 
+    & a {
+      color: var(--accent2);
+    }
+
     @media (width >= 800px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2em;
-      
+
       @media (height >= 720px) {
         padding-top: 10dvh;
         max-height: 360px;
@@ -83,7 +91,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
   }
 
   .project-media > * {
-    width: clamp(200px, 80vw, 400px);
+    width: clamp(200px, 80vw, 350px);
 
     & img {
       width: inherit;
@@ -111,7 +119,7 @@ const { title, description, videoHtml, imgSrc, url, repo } = Astro.props;
         float: right;
         width: 1.3em;
         z-index: 1;
-        
+
         &:hover {
           color: var(--accent1);
           transform: scale(1.2);
