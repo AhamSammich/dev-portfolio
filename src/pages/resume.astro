@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Resume | Andre L. Hammons">
+  <section>
+    <iframe
+      src="https://drive.google.com/file/d/1uLuuipu62wBkfRSOWgsgklut0IaDYepa/preview"
+      width="640"
+      height="480"
+      allow="autoplay"
+    >
+    </iframe>
+    <a
+      href="https://drive.proton.me/urls/XBEEN9CBQW#eliaXTZQPYyT"
+      target="_self"
+      id="download-resume"
+    >
+      <Icon pack="mdi" name="download" />
+      Download
+    </a>
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  a#download-resume {
+    float: right;
+    background: var(--accent3);
+    color: var(--color2);
+    padding: 0.5em 1em;
+    border-radius: 0.2rem;
+    white-space: nowrap;
+    font-size: clamp(20px, 2.5dvw, 22px);
+    font-weight: bold;
+
+    &:hover {
+      background: var(--accent1);
+      color: var(--color1);
+    }
+
+    & [astro-icon] {
+      vertical-align: middle;
+      width: 20px;
+    }
+  }
+  iframe {
+    border: none;
+    border-radius: 0.2rem;
+  }
+</style>
