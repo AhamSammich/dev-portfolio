@@ -7,8 +7,6 @@ import Layout from "../layouts/Layout.astro";
   <section>
     <iframe
       src="https://drive.google.com/file/d/1uLuuipu62wBkfRSOWgsgklut0IaDYepa/preview"
-      width="640"
-      height="480"
       allow="autoplay"
     >
     </iframe>
@@ -54,5 +52,7 @@ import Layout from "../layouts/Layout.astro";
   iframe {
     border: none;
     border-radius: 0.2rem;
+    width: clamp(400px, 90vw, 720px);
+    height: 60vh;
   }
 </style>
